@@ -6,6 +6,7 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 	public var position:FlxPoint;
 	public var background:FlxSprite;
 	public var text:FlxTypeText;
+	public var borderSize:Float;
 
 	public static inline var WIDTH:Int = 400;
 	public static inline var HEIGHT:Int = 200;
@@ -15,6 +16,7 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 	public function new(x:Float, y:Float) {
 		super();
 		position = new FlxPoint(x, y);
+		borderSize = 4;
 		create();
 	}
 
@@ -24,15 +26,21 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 	}
 
 	public function createBackground(positioin:FlxPoint) {
-		background = new FlxSprite(position.x,
-			position.y).makeGraphic(WIDTH, HEIGHT, BGCOLOR);
+		background = new FlxSprite(position.x, position.y);
+		// Have to use make graphic first in order to actually draw Rects
+		background.makeGraphic(WIDTH, HEIGHT, BGCOLOR);
+
+		background.drawRect(0, 0, WIDTH, HEIGHT, KColor.WHITE);
+		background.drawRect(borderSize, borderSize, WIDTH - borderSize * 2,
+			HEIGHT - borderSize * 2, BGCOLOR);
 		add(background);
 	}
 
 	public function createText(position:FlxPoint) {
-		var x = position.x + 12;
-		var y = position.y + 12;
-		text = new FlxTypeText(x, y, WIDTH - 12, 'Test Text', FONTSIZE);
+		var x = position.x + 12 + borderSize;
+		var y = position.y + 12 + borderSize;
+		text = new FlxTypeText(x, y, cast WIDTH - (12 + borderSize),
+			'Test Text', FONTSIZE);
 		text.wordWrap = true;
 		add(text);
 	}

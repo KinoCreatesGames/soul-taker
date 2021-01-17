@@ -17,7 +17,8 @@ class StatsSubState extends FlxSubState {
 		var leftPortion = (FlxG.width / 3) * 2;
 		var rightPortion = FlxG.width / 3;
 		background = new FlxSprite(0, 0);
-		// Draw Right
+		background.makeGraphic(FlxG.width, FlxG.height,
+			KColor.TRANSPARENT); // Draw Right
 		background.drawRect(leftPortion, 0, rightPortion, FlxG.height,
 			KColor.BURGUNDY);
 	}
