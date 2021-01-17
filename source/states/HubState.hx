@@ -14,7 +14,9 @@ class HubState extends FlxState {
 		createCharacter();
 	}
 
-	public function createBackground() {}
+	public function createBackground() {
+		// Background for character as a pixel art room
+	}
 
 	public function createButtons() {
 		// Add Buttons
@@ -36,6 +38,13 @@ class HubState extends FlxState {
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
+		updatePause();
+	}
+
+	public function updatePause() {
+		if (FlxG.keys.anyPressed([ESCAPE])) {
+			openSubState(new PauseSubState());
+		}
 	}
 
 	// Buttons

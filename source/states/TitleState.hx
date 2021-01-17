@@ -49,7 +49,7 @@ class TitleState extends FlxState {
 	}
 
 	public function clickStart() {
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(new HubState());
 	}
 
 	public function clickContinue() {

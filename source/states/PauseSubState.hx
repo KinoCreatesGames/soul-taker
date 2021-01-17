@@ -3,13 +3,16 @@ package states;
 class PauseSubState extends FlxSubState {
 	public var pauseText:FlxText;
 
+	private var initialPosition:Float;
 	private var timeCount:Float;
 
 	override public function create() {
 		FlxG.mouse.visible = true;
 		pauseText = new FlxText(0, 0, -1, 'Pause', 32);
 		pauseText.screenCenter();
+		pauseText.y -= 30;
 		pauseText.scrollFactor.set(0, 0);
+		initialPosition = pauseText.y;
 		add(pauseText);
 		var resumeButton = new FlxButton(0, 0, 'Resume', resumeGame);
 		resumeButton.screenCenter();
@@ -29,7 +32,7 @@ class PauseSubState extends FlxSubState {
 
 	public function updatePausePosition(elapsed:Float) {
 		timeCount += elapsed;
-		pauseText.y = pauseText.y + (100 * Math.sin(timeCount));
+		pauseText.y = initialPosition + (30 * Math.sin(timeCount));
 		if (timeCount > 30) {
 			timeCount = 0;
 		}
