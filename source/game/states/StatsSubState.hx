@@ -1,14 +1,27 @@
 package game.states;
 
+import game.chars.Gal;
+import flixel.FlxCamera;
 import flixel.util.FlxAxes;
 
 class StatsSubState extends FlxSubState {
 	public var background:FlxSprite;
 	public var titleText:FlxText;
-	public var player:FlxSprite;
+	public var player:Gal;
+	public var playerSprite:FlxSprite;
+	public var subStateCameras:Array<FlxCamera>;
+
+	public function new(gal:Gal) {
+		this.player = gal;
+		super();
+	}
 
 	override public function create() {
 		FlxG.mouse.visible = true;
+		// Setup camera for containing game objects for blur filter when switching scenes
+		// subStateCamera = new FlxCamera(0, 0, 300, 300);
+		// FlxG.cameras.add(subStateCamera);
+		subStateCameras = [];
 		createBackground();
 		createTitle();
 		createButtons();
@@ -22,11 +35,13 @@ class StatsSubState extends FlxSubState {
 		// 2: 1 Ratio for Screen Here
 		var leftPortion = (FlxG.width / 3) * 2;
 		var rightPortion = FlxG.width / 3;
+
 		background = new FlxSprite(0, 0);
 		background.makeGraphic(FlxG.width, FlxG.height,
 			KColor.TRANSPARENT); // Draw Right
 		background.drawRect(leftPortion, 0, rightPortion, FlxG.height,
 			KColor.BURGUNDY);
+
 		add(background);
 	}
 
@@ -60,19 +75,24 @@ class StatsSubState extends FlxSubState {
 
 		y += lineHeight;
 		// Draw Stats
-		var hpText = new FlxText(x, y, -1, 'HP:', textSize);
+		var hpText = new FlxText(x, y, -1, 'HP: ${player.health}', textSize);
 		add(hpText);
 		y += lineHeight;
-		var defText = new FlxText(x, y, -1, 'Def:', textSize);
+		var atkText = new FlxText(x, y, -1, 'Atk: ${player.atk}', textSize);
+		add(atkText);
+		y += lineHeight;
+		var defText = new FlxText(x, y, -1, 'Def: ${player.def}', textSize);
 		add(defText);
 		y += lineHeight;
 	}
 
 	public function createCharacter() {
 		var leftPortion = (FlxG.width / 3) * 2;
-		var position = leftPortion / 2;
-		player = new FlxSprite(position, FlxG.height / 2);
-		player.makeGraphic(32, 32, FlxColor.WHITE);
+		var position = (leftPortion / 2) - 16;
+		playerSprite = new FlxSprite(position, FlxG.height / 2);
+		playerSprite.makeGraphic(32, 32, FlxColor.WHITE);
+		playerSprite.x += 200;
+		playerSprite.y -= 100;
 		add(player);
 	}
 
@@ -81,6 +101,11 @@ class StatsSubState extends FlxSubState {
 	}
 
 	public function resumeGame() {
+		// Clear Blur Filter from Main Hub State
+		FlxG.cameras.list.iter((camera) -> camera.setFilters([]));
+		// Remove newly created cameras
+		subStateCameras.iter((subStateCamera) ->
+			FlxG.cameras.remove(subStateCamera));
 		close();
 	}
 }

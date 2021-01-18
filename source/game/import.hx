@@ -17,4 +17,5 @@ import game.GameTypes;
 using Lambda;
 using game.ext.MathExt;
 using ext.StringExt;
+using ext.ArrayExt;
 using flixel.util.FlxSpriteUtil;

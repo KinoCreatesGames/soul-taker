@@ -1,7 +1,6 @@
-package;
+package ext;
 
-@:build(buildmac.DepotMacros.buildDepotFile('assets/data/soul.dpo'))
-class DepotData {
+class ArrayExt {
 	public static function getByFn<T>(arr:Array<T>, fn:T -> Bool):T {
 		var result = arr.filter(fn);
 		if (result != null) {

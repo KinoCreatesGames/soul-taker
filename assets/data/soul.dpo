@@ -108,6 +108,103 @@
                     ]
                 }
             }
+        },
+        {
+            "name": "actors",
+            "description": "Information on actor stats and their base stats.",
+            "displayColumn": "id",
+            "guid": "da8505fc-f2e8-4663-bf3b-e752c233e6ed",
+            "columns": [
+                {
+                    "typeStr": "text",
+                    "guid": "6c47e0da-4850-4b8c-9c16-f07e3ac997dd",
+                    "name": "name",
+                    "description": "Name of the actor",
+                    "defaultValue": "Base",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "b7e5f8cf-cce2-4bb0-9fe8-3789a6870fad",
+                    "description": "The amount of atk the actor has.",
+                    "name": "atk",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "da9a7e3e-73c2-441f-aab0-fdbae65e20b6",
+                    "description": "The amount of defense the actor has.",
+                    "name": "def",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "330c9eee-15de-493f-b639-7a0b455058a1",
+                    "description": "The amount of health the actor has.",
+                    "name": "health",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "2a713adc-7402-4407-bfdc-042aa0a65f24",
+                    "id": "0",
+                    "name": "Koyuki",
+                    "atk": 5,
+                    "def": 5,
+                    "health": 20
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
         }
     ]
 }

@@ -1,12 +1,15 @@
 package game.states;
 
+import openfl.geom.Point;
+import flixel.FlxCamera;
+import openfl.filters.BlurFilter;
 import game.ui.PlayerHUD;
 import js.html.Console;
 import game.ui.MsgWindow;
 import game.chars.*;
 
 class HubState extends FlxState {
-	public var player:FlxSprite;
+	public var player:Gal;
 
 	public var statsButton:FlxButton;
 	public var saveButton:FlxButton;
@@ -16,6 +19,9 @@ class HubState extends FlxState {
 
 	override public function create() {
 		FlxG.mouse.visible = true;
+		FlxG.game.filtersEnabled = false;
+		// Required for blur effect - flash only
+		FlxG.camera.useBgAlphaBlending = true;
 		createBackground();
 		createButtons();
 		createPlayerHUD();
@@ -51,7 +57,9 @@ class HubState extends FlxState {
 	}
 
 	public function createCharacter() {
-		player = new Gal(0, 0);
+		var playerData = DepotData.Actors.lines.getByFn((el) ->
+			el.name == 'Koyuki');
+		player = new Gal(0, 0, playerData);
 		player.screenCenter();
 		add(player);
 	}
@@ -88,7 +96,12 @@ class HubState extends FlxState {
 	// Buttons
 
 	public function clickStats() {
-		openSubState(new StatsSubState());
+		var blur = new BlurFilter();
+		// FlxG.camera.setFilters([blur]);
+		// var tempData = player.pixels.clone();
+		// var realData = player.pixels;
+		// realData.applyFilter(tempData, tempData.rect, new Point(0, 0), blur);
+		openSubState(new StatsSubState(player));
 	}
 
 	public function clickSave() {
