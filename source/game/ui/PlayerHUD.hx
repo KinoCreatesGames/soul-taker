@@ -1,4 +1,4 @@
-package ui;
+package game.ui;
 
 class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 	public var position:FlxPoint;
@@ -26,7 +26,7 @@ class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 	public function createDayCounter(position:FlxPoint) {
 		var x = WIDTH - 300;
 		var y = 0;
-		dayCounter = new FlxText(x, y, 100, 'Days:${days}', 24);
+		dayCounter = new FlxText(x, y, 100, 'Days: ${days}', 24);
 		add(dayCounter);
 	}
 

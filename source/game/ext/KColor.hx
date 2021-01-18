@@ -1,4 +1,4 @@
-package ext;
+package game.ext;
 
 @:forward
 @:forwardStatics

@@ -1,4 +1,4 @@
-package states;
+package game.states;
 
 class SaveSubState extends FileSubState {
 	override public function create() {

@@ -1,4 +1,4 @@
-package states;
+package game.states;
 
 class BattleState extends FlxState {
 	override public function create() {

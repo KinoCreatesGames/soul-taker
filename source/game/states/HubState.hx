@@ -1,12 +1,12 @@
-package states;
+package game.states;
 
-import ui.PlayerHUD;
+import game.ui.PlayerHUD;
 import js.html.Console;
-import ui.MsgWindow;
-import chars.*;
+import game.ui.MsgWindow;
+import game.chars.*;
 
 class HubState extends FlxState {
-	public var charSprite:FlxSprite;
+	public var player:FlxSprite;
 
 	public var statsButton:FlxButton;
 	public var saveButton:FlxButton;
@@ -51,9 +51,9 @@ class HubState extends FlxState {
 	}
 
 	public function createCharacter() {
-		charSprite = new Gal(0, 0);
-		charSprite.screenCenter();
-		add(charSprite);
+		player = new Gal(0, 0);
+		player.screenCenter();
+		add(player);
 	}
 
 	public function createMsgWindow() {
@@ -61,13 +61,22 @@ class HubState extends FlxState {
 		var y = FlxG.height - MsgWindow.HEIGHT;
 		msgWindow = new MsgWindow(x, y);
 		add(msgWindow);
-		msgWindow.sendMessage('Hello Honey', 'Koyuki');
 		Console.log(msgWindow);
 	}
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
 		updatePause();
+		updateClickPlayer(elapsed);
+	}
+
+	public function updateClickPlayer(elapsed:Float) {
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(player)) {
+			var randomIndex = Math.round((Math.random() * (DepotData.Barks.lines.length
+				- 1)));
+			var randomLine = DepotData.Barks.lines[randomIndex];
+			msgWindow.sendMessage(randomLine.message, randomLine.name);
+		}
 	}
 
 	public function updatePause() {

@@ -1,0 +1,113 @@
+{
+    "sheets": [
+        {
+            "name": "barks",
+            "description": "Random messages that will be triggered when you click on the gal.",
+            "displayColumn": "id",
+            "guid": "79ee0d51-d381-4c00-a857-a09b76322ce8",
+            "columns": [
+                {
+                    "typeStr": "text",
+                    "guid": "3d956e44-eb36-4f43-835a-2452dd7a18e7",
+                    "name": "name",
+                    "description": "The name of the message sender",
+                    "defaultValue": "Koyuki",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "b787ce00-2afa-41e5-b1f6-ae7bac9a104f",
+                    "description": "The minimum amount of affection for when this bark will trigger.",
+                    "name": "affectionMin",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "51015d11-0b0b-4222-a291-8180af0ef51a",
+                    "description": "The maximum amount of affection while this bark will trigger.",
+                    "name": "affectionMax",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 25,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "longtext",
+                    "guid": "147f0fe1-20e1-4027-ba85-5da31906c349",
+                    "name": "message",
+                    "description": "The message of the bark.",
+                    "defaultValue": "Hello",
+                    "iconName": "newLongText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "longtext"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "2db4629a-f021-4fcc-95b8-5aa5fc76597f",
+                    "id": "0",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Hello"
+                },
+                {
+                    "guid": "fe7505ed-7772-4034-9a06-d94a6b1719b9",
+                    "id": "1",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Are you that interested in what I'm saying?"
+                },
+                {
+                    "guid": "3defe2e2-e60b-4db8-a6d2-24cceddf4548",
+                    "id": "2",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Maybe when you get to know me better, I'll be able to tell you more about me."
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        }
+    ]
+}

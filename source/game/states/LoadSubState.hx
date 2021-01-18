@@ -1,4 +1,4 @@
-package states;
+package game.states;
 
 class LoadSubState extends FileSubState {
 	override public function setTitleText() {

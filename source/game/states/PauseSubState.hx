@@ -1,4 +1,4 @@
-package states;
+package game.states;
 
 class PauseSubState extends FlxSubState {
 	public var pauseText:FlxText;

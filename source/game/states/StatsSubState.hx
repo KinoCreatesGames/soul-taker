@@ -1,4 +1,4 @@
-package states;
+package game.states;
 
 class StatsSubState extends FlxSubState {
 	public var background:FlxSprite;
