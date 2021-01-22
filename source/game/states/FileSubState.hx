@@ -1,10 +1,11 @@
 package game.states;
 
+import game.ui.File;
 import flixel.util.FlxAxes;
 
 class FileSubState extends FlxSubState {
 	public var titleText:FlxText;
-	public var fileSprites:Array<FlxSprite>;
+	public var fileSprites:Array<File>;
 	public var backButton:FlxButton;
 
 	private var save:FlxSave;
@@ -35,7 +36,16 @@ class FileSubState extends FlxSubState {
 		titleText.text = '';
 	}
 
-	public function createFileList() {}
+	public function createFileList() {
+		var padding = 25;
+		var y = titleText.y + titleText.height + padding;
+		var x = FlxG.width / 2 - (File.WIDTH / 2);
+		for (i in 0...Globals.GAME_SAVE_SLOTS) {
+			var file = new File(i + 1, x, y);
+			add(file);
+			y += File.HEIGHT + padding;
+		}
+	}
 
 	public function clickBack() {
 		save.close();

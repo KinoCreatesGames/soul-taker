@@ -12,6 +12,22 @@ typedef Monster = {
 	public var patrol:Array<FlxPoint>;
 }
 
+typedef SceneText = {
+	public var text:String;
+
+	/**
+	 * Delay in seconds
+	 */
+	public var delay:Int;
+}
+
+typedef GameSaveState = {
+	public var saveIndex:Int;
+	public var days:Int;
+	public var playerStats:Actor;
+	public var playerAffectionLvl:Int;
+}
+
 enum abstract AnimTypes(String) from String to String {
 	public var IDLE:String = 'idle';
 	public var MOVE:String = 'move';

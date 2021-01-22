@@ -93,7 +93,7 @@ class StatsSubState extends FlxSubState {
 		playerSprite.makeGraphic(32, 32, FlxColor.WHITE);
 		playerSprite.x += 200;
 		playerSprite.y -= 100;
-		add(player);
+		add(playerSprite);
 	}
 
 	override public function update(elapsed:Float) {

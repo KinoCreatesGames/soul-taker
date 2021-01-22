@@ -49,7 +49,10 @@ class TitleState extends FlxState {
 	}
 
 	public function clickStart() {
-		FlxG.switchState(new HubState());
+		var introText = DepotData.Cutscene.lines.getByFn((el) ->
+			el.name == 'Intro');
+		FlxG.switchState(new CutsceneState(new HubState(),
+			introText.cutsceneText));
 	}
 
 	public function clickContinue() {

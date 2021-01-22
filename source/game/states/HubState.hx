@@ -24,8 +24,8 @@ class HubState extends FlxState {
 		FlxG.camera.useBgAlphaBlending = true;
 		createBackground();
 		createButtons();
-		createPlayerHUD();
 		createCharacter();
+		createPlayerHUD();
 		createMsgWindow();
 	}
 
@@ -52,7 +52,7 @@ class HubState extends FlxState {
 	}
 
 	public function createPlayerHUD() {
-		playerHUD = new PlayerHUD(0, 0);
+		playerHUD = new PlayerHUD(0, 0, player);
 		add(playerHUD);
 	}
 

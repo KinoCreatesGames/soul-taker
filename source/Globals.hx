@@ -1,5 +1,6 @@
 class Globals {
 	public static inline var GAME_TITLE = 'Soul Taker';
+	public static inline var GAME_SAVE_SLOTS:Int = 5;
 	public static inline var SAVE_SETTINGS = 'SoulSettings';
 	public static inline var SAVE_DATA = 'SoulData';
 	public static inline var TEXT_START = 'Start';
@@ -22,6 +23,7 @@ class Globals {
 	public static inline var PLAYER_BULLET_CD:Float = 0.15;
 	public static inline var PLAYER_GAL_NAME:String = 'Koyuki';
 	public static var HIGH_SCORE:Int = 0;
+
 	// Font Sizes
 
 	/**
