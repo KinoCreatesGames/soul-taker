@@ -75,7 +75,6 @@ class CutsceneState extends FlxState {
 	public function updateSkip(elapsed:Float) {
 		// Update Perc
 		skipPerc = Math.ceil((skipThreshold / SKIP_THRESHOLD) * 100);
-		trace('Percentage', skipPerc);
 		if (skipPerc > 0) {
 			skipBar.visible = true;
 			skipText.visible = true;
