@@ -1,5 +1,6 @@
 package game.states;
 
+import game.ui.StatWindow;
 import openfl.geom.Point;
 import flixel.FlxCamera;
 import openfl.filters.BlurFilter;
@@ -15,6 +16,7 @@ class HubState extends FlxState {
 	public var saveButton:FlxButton;
 	public var optionsButton:FlxButton;
 	public var playerHUD:PlayerHUD;
+	public var statWindow:StatWindow;
 	public var msgWindow:MsgWindow;
 
 	override public function create() {
@@ -26,6 +28,7 @@ class HubState extends FlxState {
 		createButtons();
 		createCharacter();
 		createPlayerHUD();
+		createStatWindow();
 		createMsgWindow();
 	}
 
@@ -64,6 +67,14 @@ class HubState extends FlxState {
 		add(player);
 	}
 
+	public function createStatWindow() {
+		var spacing = 24;
+		var y = player.y - (StatWindow.HEIGHT + StatWindow.MARGIN);
+		statWindow = new StatWindow(player.x, y, player);
+		statWindow.hide();
+		add(statWindow);
+	}
+
 	public function createMsgWindow() {
 		var x = (FlxG.width / 2) - (MsgWindow.WIDTH / 2);
 		var y = FlxG.height - MsgWindow.HEIGHT;
@@ -75,7 +86,32 @@ class HubState extends FlxState {
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
 		updatePause();
+		updateMouseOverPlayer();
 		updateClickPlayer(elapsed);
+	}
+
+	public function updatePause() {
+		if (FlxG.keys.anyPressed([ESCAPE])) {
+			openSubState(new PauseSubState());
+		}
+	}
+
+	public function updateMouseOverPlayer() {
+		// On Mouse Over Show Stat Window
+		if (FlxG.mouse.overlaps(player)) {
+			if (statWindow.visible == false) {
+				statWindow.move(player.x,
+					player.y - (StatWindow.HEIGHT + StatWindow.MARGIN));
+				statWindow.show();
+				statWindow.updateStats();
+			}
+		}
+
+		if (!FlxG.mouse.overlaps(player)) {
+			if (statWindow.visible == true) {
+				statWindow.hide();
+			}
+		}
 	}
 
 	public function updateClickPlayer(elapsed:Float) {
@@ -84,12 +120,6 @@ class HubState extends FlxState {
 				- 1)));
 			var randomLine = DepotData.Barks.lines[randomIndex];
 			msgWindow.sendMessage(randomLine.message, randomLine.name);
-		}
-	}
-
-	public function updatePause() {
-		if (FlxG.keys.anyPressed([ESCAPE])) {
-			openSubState(new PauseSubState());
 		}
 	}
 

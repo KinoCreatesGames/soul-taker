@@ -7,6 +7,7 @@ class CutsceneState extends FlxState {
 	public var textIndex:Int;
 	public var textList:Array<SceneText>;
 	public var nextState:FlxState;
+	public var skipThreshold:Float;
 
 	/**
 	 *  Delay before transitioning to the next text in seconds.
@@ -15,9 +16,11 @@ class CutsceneState extends FlxState {
 
 	public static inline var TEXT_WIDTH:Int = 400;
 	public static inline var INIT_TEXT_DELAY:Int = 3;
+	public static inline var SKIP_THRESHOLD:Float = 2.5;
 
 	public function new(newState:FlxState, textInfo:Array<SceneText>) {
 		textIndex = -1;
+		skipThreshold = SKIP_THRESHOLD;
 		textList = textInfo;
 		nextState = newState;
 		textDelay = 0;
@@ -39,7 +42,20 @@ class CutsceneState extends FlxState {
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
+		updateSkip(elapsed);
 		updateText(elapsed);
+	}
+
+	public function updateSkip(elapsed:Float) {
+		if (FlxG.keys.anyPressed([Z])) {
+			skipThreshold -= elapsed;
+		} else {
+			skipThreshold = SKIP_THRESHOLD;
+		}
+
+		if (skipThreshold <= 0) {
+			transitionToScene();
+		}
 	}
 
 	public function updateText(elapsed:Float) {

@@ -5,6 +5,7 @@ typedef Actor = {
 	public var health:Int;
 	public var atk:Int;
 	public var def:Int;
+	public var agi:Int;
 }
 
 typedef Monster = {

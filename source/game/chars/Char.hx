@@ -4,12 +4,14 @@ class Char extends FlxSprite {
 	public var name:String;
 	public var atk:Int;
 	public var def:Int;
+	public var agi:Int;
 
 	public function new(x:Float, y:Float, data:Actor) {
 		super(x, y);
 		this.name = data.name;
 		this.atk = data.atk;
 		this.def = data.def;
+		this.agi = data.agi;
 		this.health = data.health;
 	}
 

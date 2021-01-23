@@ -266,6 +266,23 @@
                         "max": "int",
                         "defaultValue": "int"
                     }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "15f81c75-dd3b-41e7-8132-8a621f902b67",
+                    "description": "Agility the character has which determines turn order.",
+                    "name": "agi",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
                 }
             ],
             "lines": [
@@ -275,7 +292,8 @@
                     "name": "Koyuki",
                     "atk": 5,
                     "def": 5,
-                    "health": 20
+                    "health": 20,
+                    "agi": 5
                 }
             ],
             "hidden": false,
