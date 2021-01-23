@@ -21,6 +21,7 @@ class CutsceneState extends FlxState {
 	public static inline var SKIP_THRESHOLD:Float = 2.5;
 
 	public function new(newState:FlxState, textInfo:Array<SceneText>) {
+		bgColor = KColor.RICH_BLACK_FORGRA;
 		textIndex = -1;
 		skipThreshold = 0;
 		skipPerc = 0;
@@ -47,11 +48,15 @@ class CutsceneState extends FlxState {
 			"skipPerc", 0, 100, true);
 		skipBar.createFilledBar(KColor.BLACK, KColor.SNOW);
 		skipText = new FlxText(skipBar.x + (skipBar.width / 2),
-			skipBar.y + skipBar.height / 2, 50, 'Skip', 8);
+			(skipBar.y) - 2, 50, 'Skip', 8);
+		skipText.x -= 6;
+		skipText.color = KColor.BURGUNDY;
+		skipText.borderColor = KColor.BLACK;
 		skipBar.visible = false;
 		skipText.visible = false;
-		add(skipText);
+
 		add(skipBar);
+		add(skipText);
 	}
 
 	public function createSceneText() {
@@ -68,17 +73,18 @@ class CutsceneState extends FlxState {
 
 	public function updateSkip(elapsed:Float) {
 		// Update Perc
-		skipPerc = Math.round(skipThreshold / SKIP_THRESHOLD);
+		skipPerc = Math.ceil((skipThreshold / SKIP_THRESHOLD) * 100);
+
 		if (skipPerc > 0) {
 			skipBar.visible = true;
-			skipBar.visible = true;
+			skipText.visible = true;
 		} else {
 			skipBar.visible = false;
 			skipText.visible = false;
 		}
 		if (FlxG.keys.anyPressed([Z])) {
 			skipThreshold += elapsed;
-		} else {
+		} else if (skipPerc < 100) {
 			skipThreshold -= elapsed;
 		}
 
