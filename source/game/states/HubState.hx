@@ -13,6 +13,7 @@ class HubState extends FlxState {
 	public var player:Gal;
 
 	public var statsButton:FlxButton;
+	public var trainingButton:FlxButton;
 	public var saveButton:FlxButton;
 	public var optionsButton:FlxButton;
 	public var playerHUD:PlayerHUD;
@@ -41,14 +42,17 @@ class HubState extends FlxState {
 		var x = FlxG.width - 120;
 		var y = 20;
 		var spacing = 40;
+		trainingButton = new FlxButton(x, y, 'Training', clickTraining);
+		y += spacing;
 		statsButton = new FlxButton(x, y, '', clickStats);
 		statsButton.loadGraphic(AssetPaths.statbutton__png, true, 32, 32);
-		x += spacing;
+		y += spacing;
 		saveButton = new FlxButton(x, y, 'Save', clickSave);
-		x += spacing;
+		y += spacing;
 		optionsButton = new FlxButton(x, y, 'Options', clickOptions);
 
 		// Add Buttons to  screen
+		add(trainingButton);
 		add(statsButton);
 		add(saveButton);
 		add(optionsButton);
@@ -124,6 +128,10 @@ class HubState extends FlxState {
 	}
 
 	// Buttons
+
+	public function clickTraining() {
+		openSubState(new TrainingSubState(player));
+	}
 
 	public function clickStats() {
 		var blur = new BlurFilter();

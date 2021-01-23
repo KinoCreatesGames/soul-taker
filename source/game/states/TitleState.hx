@@ -7,8 +7,9 @@ class TitleState extends FlxState {
 		FlxG.mouse.visible = true;
 		bgColor = KColor.BURGUNDY;
 		// Create Title Text
-		var text = new FlxText(0, 0, 300, Globals.GAME_TITLE, 32);
+		var text = new FlxText(0, 0, -1, Globals.GAME_TITLE, 32);
 		add(text);
+		text.alignment = CENTER;
 		text.screenCenter();
 		createButtons();
 		createControls();

@@ -12,6 +12,7 @@ abstract KColor(FlxColor) from FlxColor to FlxColor {
 	public static inline var SNOW = 0xFFFBF5F3;
 	public static inline var RICH_BLUE = 0x0F0E0EFF;
 	public static inline var RICH_BLACK_FORGRA = 0xFF0F0E0E; // First 2 Letters are ARGB
+	public static inline var RICH_BLACK_FORGRA_LOW = 0xF00F0E0E;
 	public static inline var DARK_BYZANTIUM = 0xFF522B47;
 	public static inline var MORNING_BLUE = 0xFF8DAA9D;
 }

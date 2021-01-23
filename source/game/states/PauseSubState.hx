@@ -6,6 +6,10 @@ class PauseSubState extends FlxSubState {
 	private var initialPosition:Float;
 	private var timeCount:Float;
 
+	public function new() {
+		super(KColor.RICH_BLACK_FORGRA_LOW); // Lower Opacity RICH_Black
+	}
+
 	override public function create() {
 		FlxG.mouse.visible = true;
 		pauseText = new FlxText(0, 0, -1, 'Pause', 32);
@@ -43,6 +47,10 @@ class PauseSubState extends FlxSubState {
 	}
 
 	public function toTitle() {
-		FlxG.switchState(new TitleState());
+		FlxG.camera.fade(KColor.BLACK, 1, false, () -> {
+			close();
+			// FlxG.camera.fade(KColor.BLACK, 1, true);
+			FlxG.switchState(new TitleState());
+		});
 	}
 }
