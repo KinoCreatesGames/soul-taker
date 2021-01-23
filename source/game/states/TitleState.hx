@@ -5,6 +5,7 @@ import flixel.util.FlxAxes;
 class TitleState extends FlxState {
 	override public function create() {
 		FlxG.mouse.visible = true;
+		bgColor = KColor.BURGUNDY;
 		// Create Title Text
 		var text = new FlxText(0, 0, 300, Globals.GAME_TITLE, 32);
 		add(text);

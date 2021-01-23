@@ -7,10 +7,12 @@ class CutsceneState extends FlxState {
 	public var textIndex:Int;
 	public var textList:Array<SceneText>;
 	public var nextState:FlxState;
+	public var skipBar:FlxBar;
+	public var skipText:FlxText;
 	public var skipThreshold:Float;
+	public var skipPerc:Int;
 
-	/**
-	 *  Delay before transitioning to the next text in seconds.
+	/** *  Delay before transitioning to the next text in seconds.
 	 */
 	public var textDelay:Float;
 
@@ -20,7 +22,8 @@ class CutsceneState extends FlxState {
 
 	public function new(newState:FlxState, textInfo:Array<SceneText>) {
 		textIndex = -1;
-		skipThreshold = SKIP_THRESHOLD;
+		skipThreshold = 0;
+		skipPerc = 0;
 		textList = textInfo;
 		nextState = newState;
 		textDelay = 0;
@@ -29,9 +32,26 @@ class CutsceneState extends FlxState {
 	}
 
 	override public function create() {
+		createSkip();
 		createSceneText();
 		transitionText();
 		super.create();
+	}
+
+	public function createSkip() {
+		var margin = 48;
+		var barWidth = 100;
+		var x = FlxG.width - (barWidth + margin);
+		var y = margin;
+		skipBar = new FlxBar(x, y, LEFT_TO_RIGHT, barWidth, 10, this,
+			"skipPerc", 0, 100, true);
+		skipBar.createFilledBar(KColor.BLACK, KColor.SNOW);
+		skipText = new FlxText(skipBar.x + (skipBar.width / 2),
+			skipBar.y + skipBar.height / 2, 50, 'Skip', 8);
+		skipBar.visible = false;
+		skipText.visible = false;
+		add(skipText);
+		add(skipBar);
 	}
 
 	public function createSceneText() {
@@ -47,13 +67,22 @@ class CutsceneState extends FlxState {
 	}
 
 	public function updateSkip(elapsed:Float) {
-		if (FlxG.keys.anyPressed([Z])) {
-			skipThreshold -= elapsed;
+		// Update Perc
+		skipPerc = Math.round(skipThreshold / SKIP_THRESHOLD);
+		if (skipPerc > 0) {
+			skipBar.visible = true;
+			skipBar.visible = true;
 		} else {
-			skipThreshold = SKIP_THRESHOLD;
+			skipBar.visible = false;
+			skipText.visible = false;
+		}
+		if (FlxG.keys.anyPressed([Z])) {
+			skipThreshold += elapsed;
+		} else {
+			skipThreshold -= elapsed;
 		}
 
-		if (skipThreshold <= 0) {
+		if (skipThreshold >= SKIP_THRESHOLD) {
 			transitionToScene();
 		}
 	}
