@@ -31,6 +31,8 @@ class HubState extends FlxState {
 		createPlayerHUD();
 		createStatWindow();
 		createMsgWindow();
+		// Captures Data For Saving
+		captureData();
 	}
 
 	public function createBackground() {
@@ -66,7 +68,12 @@ class HubState extends FlxState {
 	public function createCharacter() {
 		var playerData = DepotData.Actors.lines.getByFn((el) ->
 			el.name == 'Koyuki');
-		player = new Gal(0, 0, playerData);
+		var gameData = SaveLoad.Save.gameData;
+		if (gameData.player != null) {
+			player = gameData.player;
+		} else {
+			player = new Gal(0, 0, playerData);
+		}
 		player.screenCenter();
 		add(player);
 	}
@@ -87,11 +94,17 @@ class HubState extends FlxState {
 		Console.log(msgWindow);
 	}
 
+	public function captureData() {
+		SaveLoad.Save.gameData.player = player;
+		SaveLoad.Save.gameData.days = playerHUD.days;
+	}
+
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
 		updatePause();
 		updateMouseOverPlayer();
 		updateClickPlayer(elapsed);
+		updateGameTime(elapsed);
 	}
 
 	public function updatePause() {
@@ -125,6 +138,13 @@ class HubState extends FlxState {
 			var randomLine = DepotData.Barks.lines[randomIndex];
 			msgWindow.sendMessage(randomLine.message, randomLine.name);
 		}
+	}
+
+	public function updateGameTime(elapsed:Float) {
+		if (SaveLoad.Save.gameData.gameTime == null) {
+			SaveLoad.Save.gameData.gameTime = 0;
+		}
+		SaveLoad.Save.gameData.gameTime += elapsed;
 	}
 
 	// Buttons

@@ -19,8 +19,7 @@ class OptionsSubState extends FlxSubState {
 
 	override public function create() {
 		FlxG.mouse.visible = true;
-		save = new FlxSave();
-		save.bind(Globals.SAVE_SETTINGS);
+		save = SaveLoad.Save.createSaveSettings();
 		createTitleText();
 		createOptions();
 		super.create();

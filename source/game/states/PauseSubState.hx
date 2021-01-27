@@ -1,5 +1,7 @@
 package game.states;
 
+import game.ui.TextButton;
+
 class PauseSubState extends FlxSubState {
 	public var pauseText:FlxText;
 
@@ -18,10 +20,12 @@ class PauseSubState extends FlxSubState {
 		pauseText.scrollFactor.set(0, 0);
 		initialPosition = pauseText.y;
 		add(pauseText);
-		var resumeButton = new FlxButton(0, 0, 'Resume', resumeGame);
+		var resumeButton = new TextButton(0, 0, 'Resume', Globals.FONT_N,
+			resumeGame);
 		resumeButton.screenCenter();
 		resumeButton.y += 40;
-		var returnToTitleButton = new FlxButton(0, 0, 'To Title', toTitle);
+		var returnToTitleButton = new TextButton(0, 0, 'To Title',
+			Globals.FONT_N, toTitle);
 		returnToTitleButton.screenCenter();
 		returnToTitleButton.y += 80;
 		add(resumeButton);

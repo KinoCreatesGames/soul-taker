@@ -1,26 +1,22 @@
 package;
 
+import game.chars.Char;
+import game.chars.Gal;
+import flixel.system.frontEnds.PluginFrontEnd;
 import flixel.FlxG;
 import flixel.util.FlxSave;
 import game.states.TitleState;
 import flixel.FlxGame;
 import openfl.display.Sprite;
+import game.SaveLoad;
 
 class Main extends Sprite {
 	public function new() {
 		super();
-		addChild(new FlxGame(0, 0, TitleState));
-		loadSettings();
-	}
 
-	public function loadSettings() {
-		// Saves The Options For The Game
-		var save = new FlxSave();
-		save.bind(Globals.SAVE_SETTINGS);
-		// Set Volume
-		if (save.data.volume != null) {
-			FlxG.sound.volume = save.data.volume;
-		}
-		save.close();
+		addChild(new FlxGame(0, 0, TitleState));
+		// Add Save Load on Game Start
+		SaveLoad.initializeSave();
+		SaveLoad.Save.loadSettings();
 	}
 }

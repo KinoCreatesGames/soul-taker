@@ -5,6 +5,7 @@ import flixel.addons.text.FlxTypeText;
 class MsgWindow extends FlxTypedGroup<FlxSprite> {
 	public var position:FlxPoint;
 	public var background:FlxSprite;
+	public var nextArrow:FlxSprite;
 	public var text:FlxTypeText;
 	public var borderSize:Float;
 
@@ -22,6 +23,7 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 
 	public function create() {
 		createBackground(position);
+		createDownArrow(position);
 		createText(position);
 	}
 
@@ -36,12 +38,25 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 		add(background);
 	}
 
+	public function createDownArrow(position:FlxPoint) {
+		var margin = 32 + borderSize;
+		var y = (position.y + HEIGHT) - margin;
+		var x = (position.x + WIDTH) - margin;
+
+		nextArrow = new FlxSprite(x, y);
+		nextArrow.loadGraphic(AssetPaths.dialog_arrow__png, true, 32, 32);
+		nextArrow.animation.add('spin', [0, 1, 2, 3, 4, 5, 6], 6, true);
+		nextArrow.visible = false;
+		add(nextArrow);
+	}
+
 	public function createText(position:FlxPoint) {
 		var x = position.x + 12 + borderSize;
 		var y = position.y + 12 + borderSize;
 		text = new FlxTypeText(x, y, cast WIDTH - (12 + borderSize),
 			'Test Text', FONTSIZE);
 		text.wordWrap = true;
+
 		add(text);
 	}
 
@@ -55,7 +70,14 @@ class MsgWindow extends FlxTypedGroup<FlxSprite> {
 		} else {
 			this.text.resetText('${text}');
 		}
-		this.text.start(0.05);
+		// Next arrow becomes invisible.
+		nextArrow.visible = false;
+		nextArrow.animation.stop();
+		this.text.start(0.05, false, false, null, () -> {
+			trace('Play Arrow');
+			nextArrow.visible = true;
+			nextArrow.animation.play('spin');
+		});
 	}
 
 	public function show() {

@@ -1,8 +1,7 @@
 class Globals {
 	public static inline var GAME_TITLE = 'Soul Taker';
 	public static inline var GAME_SAVE_SLOTS:Int = 5;
-	public static inline var SAVE_SETTINGS = 'SoulSettings';
-	public static inline var SAVE_DATA = 'SoulData';
+
 	public static inline var TEXT_START = 'Start';
 	public static inline var TEXT_CONTINUE = 'Continue';
 	public static inline var TEXT_EXIT = 'Exit';

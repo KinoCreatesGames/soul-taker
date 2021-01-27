@@ -1,16 +1,32 @@
 package game.states;
 
+import game.ui.TextButton;
 import flixel.util.FlxAxes;
 
+/**
+ * Add Press Start Before entering main scene for title
+ * as part of the update functionality
+ */
 class TitleState extends FlxState {
+	public var pressStartText:FlxText;
+	public var playButton:TextButton;
+	public var continueButton:TextButton;
+	public var optionsButton:TextButton;
+	public var completeFadeStart:Bool;
+	#if desktop
+	public var exitButton:TextButton;
+	#end
+
 	override public function create() {
 		FlxG.mouse.visible = true;
-		bgColor = KColor.BURGUNDY;
+		bgColor = KColor.RICH_BLACK_FORGRA;
 		// Create Title Text
 		var text = new FlxText(0, 0, -1, Globals.GAME_TITLE, 32);
 		add(text);
 		text.alignment = CENTER;
 		text.screenCenter();
+		completeFadeStart = false;
+		createPressStart();
 		createButtons();
 		createControls();
 		createCredits();
@@ -18,36 +34,108 @@ class TitleState extends FlxState {
 		super.create();
 	}
 
+	public function createPressStart() {
+		pressStartText = new FlxText(0, 0, -1, 'Press Any Button To Start',
+			Globals.FONT_N);
+		pressStartText.screenCenter();
+		pressStartText.y += 120;
+		// add later
+		add(pressStartText);
+		pressStartText.flicker(0, .4);
+	}
+
 	public function createButtons() {
 		// Create Buttons
 		var y = 40;
-		var playButton = new FlxButton(0, 0, Globals.TEXT_START, clickStart);
+		playButton = new TextButton(0, 0, Globals.TEXT_START, Globals.FONT_N,
+			clickStart);
+		playButton.hoverColor = KColor.BURGUNDY;
+		playButton.clickColor = KColor.BURGUNDY;
 		playButton.screenCenter();
 		playButton.y += y;
 		y += 40;
-		var continueButton = new FlxButton(0, 0, Globals.TEXT_CONTINUE,
-			clickContinue);
+		continueButton = new TextButton(0, 0, Globals.TEXT_CONTINUE,
+			Globals.FONT_N, clickContinue);
+		continueButton.hoverColor = KColor.BURGUNDY;
+		continueButton.clickColor = KColor.BURGUNDY;
 		continueButton.screenCenter();
 		continueButton.y += y;
 		y += 40;
-		var optionsButton = new FlxButton(0, 0, Globals.TEXT_OPTIONS,
-			clickOptions);
+		optionsButton = new TextButton(0, 0, Globals.TEXT_OPTIONS,
+			Globals.FONT_N, clickOptions);
+		optionsButton.hoverColor = KColor.BURGUNDY;
+		optionsButton.clickColor = KColor.BURGUNDY;
 		optionsButton.screenCenter();
 		optionsButton.y += y;
 		y += 40;
 		#if desktop
-		var exitButton = new FlxButton(0, 0, Globals.TEXT_EXIT, clickExit);
+		exitButton = new TextButton(0, 0, Globals.TEXT_EXIT, Globals.FONT_N,
+			clickExit);
+		exitButton.hoverColor = KColor.BURGUNDY;
+		exitButton.clickColor = KColor.BURGUNDY;
 		exitButton.screenCenter();
 		exitButton.y += y;
 		#end
 		// Add Buttons
 
+		playButton.canClick = false;
+		playButton.alpha = 0;
+		continueButton.canClick = false;
+		continueButton.alpha = 0;
+		optionsButton.canClick = false;
+		optionsButton.alpha = 0;
 		add(playButton);
 		add(continueButton);
 		add(optionsButton);
 		#if desktop
+		exitButton.canClick = false;
+		exitButton.alpha = 0;
 		add(exitButton);
 		#end
+	}
+
+	override public function update(elapsed:Float) {
+		super.update(elapsed);
+		updatePressStart(elapsed);
+	}
+
+	public function updatePressStart(elapsed:Float) {
+		var keyPressed = FlxG.keys.firstPressed();
+		if (keyPressed != -1) {
+			pressStartText.stopFlickering();
+			pressStartText.visible = false;
+		} else if (pressStartText.visible) {}
+
+		if (!pressStartText.visible && !pressStartText.isFlickering()
+			&& completeFadeStart == false) {
+			playButton.fadeIn(1);
+			if (playButton.alpha >= .9) {
+				continueButton.fadeIn(1);
+			}
+			if (continueButton.alpha >= .9) {
+				optionsButton.fadeIn(1);
+				#if !desktop
+				completeFadeStart = true;
+				#end
+			}
+
+			#if desktop
+			if (optionsButton.alpha >= .9) {
+				exitButton.fadeIn(1);
+				completeFadeStart = true;
+			}
+			exitButton.visible = true;
+			#end
+		}
+
+		if (completeFadeStart) {
+			playButton.canClick = true;
+			continueButton.canClick = true;
+			optionsButton.canClick = true;
+			#if desktop
+			exitButton.canClick = true;
+			#end
+		}
 	}
 
 	public function clickStart() {

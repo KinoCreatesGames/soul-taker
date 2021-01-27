@@ -12,8 +12,7 @@ class FileSubState extends FlxSubState {
 
 	override public function create() {
 		FlxG.mouse.visible = true;
-		save = new FlxSave();
-		save.bind(Globals.SAVE_DATA);
+
 		fileSprites = [];
 		createTitleText();
 		createBackButton();
@@ -41,14 +40,30 @@ class FileSubState extends FlxSubState {
 		var y = titleText.y + titleText.height + padding;
 		var x = FlxG.width / 2 - (File.WIDTH / 2);
 		for (i in 0...Globals.GAME_SAVE_SLOTS) {
-			var file = new File(i + 1, x, y);
+			var file = new File(i + 1, x, y, clickFile);
+			// pass in game data to make it easier
 			add(file);
 			y += File.HEIGHT + padding;
+			// Update File If Save Exits
+			updateFileProperties(file, i + 1);
 		}
 	}
 
+	public function updateFileProperties(file:File, id:Int) {
+		var saveData = SaveLoad.Save.createSaveData(id);
+		if (saveData.data.saveData != null) {
+			var data = saveData.data.saveData;
+			file.realTime = data.realTime;
+			file.gameTime = data.gameTime;
+			file.updateSaveText();
+		}
+	}
+
+	public function clickFile(file:File) {}
+
 	public function clickBack() {
-		save.close();
+		// Shouldn't be saving here, should be saving onClick
+		// save.close();
 		FlxG.camera.fade(KColor.BLACK, 1, false, () -> {
 			close();
 			FlxG.camera.fade(KColor.BLACK, 1, true);

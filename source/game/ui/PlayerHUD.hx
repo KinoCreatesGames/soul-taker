@@ -38,7 +38,7 @@ class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 	public function createDayCounter(position:FlxPoint) {
 		var x = WIDTH - 300;
 		var y = 0;
-		dayCounter = new FlxText(x, y, 300, 'Days: ${days}',
+		dayCounter = new FlxText(x, y, 300, 'Days  ${days}',
 			Globals.FONT_SUB_H);
 		add(dayCounter);
 	}
@@ -50,7 +50,8 @@ class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 		var barWidth = 150;
 		happinessBar = new FlxBar(x, y, LEFT_TO_RIGHT, barWidth, 25, player,
 			'happiness', 0, 100, true);
-		happinessBar.createColoredFilledBar(KColor.BURGUNDY, true, KColor.SNOW);
+		happinessBar.createFilledBar(KColor.RICH_BLACK_FORGRA,
+			KColor.BURGUNDY, true, KColor.SNOW);
 
 		happinessIcon = new FlxSprite(x + barWidth - 16, y);
 		happinessIcon.makeGraphic(32, 32, KColor.PINK);
@@ -68,7 +69,12 @@ class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 			+ happinessBar.height
 			+ 24;
 		affectionSprite = new FlxSprite(x, y);
-		affectionSprite.makeGraphic(32, 32, KColor.PINK);
+		affectionSprite.loadGraphic(AssetPaths.affection_heart__png, true, 32,
+			32);
+		affectionSprite.animation.add('low', [0]);
+		affectionSprite.animation.add('med', [1]);
+		affectionSprite.animation.add('high', [2]);
+		affectionSprite.animation.add('max', [3]);
 		add(affectionSprite);
 	}
 
@@ -78,7 +84,20 @@ class PlayerHUD extends FlxTypedGroup<FlxSprite> {
 		updateAffection();
 	}
 
-	public function updateHappiness() {}
+	public function updateHappiness() {
+		switch (player.affection) {
+			case _.withinRangef(0, 25) => true:
+				affectionSprite.animation.play('low');
+			case _.withinRangef(25, 50) => true:
+				affectionSprite.animation.play('med');
+			case _.withinRangef(50, 75) => true:
+				affectionSprite.animation.play('high');
+			case _.withinRangef(75, 100) => true:
+				affectionSprite.animation.play('max');
+			case _:
+				// Do Nothing
+		}
+	}
 
 	public function updateAffection() {
 		// Update color of heart based on affection
