@@ -1,3 +1,5 @@
 package game.states;
 
-class DefGameSubState extends MiniGameSubState {}
+class DefGameSubState extends MiniGameSubState {
+	override public function processReward() {}
+}

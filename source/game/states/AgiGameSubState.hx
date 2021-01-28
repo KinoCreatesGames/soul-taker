@@ -13,16 +13,23 @@ class AgiGameSubState extends MiniGameSubState {
 	public var effectSprite:FlxEffectSprite;
 	public var trail:FlxTrailEffect;
 	public var enemyBullets:FlxTypedGroup<Bullet>;
+	public var spawnCD:Float;
 
 	public static inline var SPEED:Float = 800;
-
+	public static inline var SPAWN_SPEED:Float = 0.5;
+	public static inline var BULLET_SPEED:Int = 1200;
 	public static inline var BULLET_CD:Float = 0.15;
 	public static inline var INVINCIBLE_CD:Float = 2.0;
 
 	override public function createElements() {
 		super.createElements();
+		initialize();
 		createPlayer();
 		createBullets();
+	}
+
+	public function initialize() {
+		spawnCD = 0;
 	}
 
 	public function createPlayer() {
@@ -41,14 +48,39 @@ class AgiGameSubState extends MiniGameSubState {
 	}
 
 	public function createBullets() {
-		enemyBullets = new FlxTypedGroup<Bullet>(20);
+		enemyBullets = new FlxTypedGroup<Bullet>(30);
 		add(enemyBullets);
 	}
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
+		updateBullets(elapsed);
 		updatePlayerMovement(elapsed);
 		updateGameOver();
+	}
+
+	public function updateBullets(elapsed:Float) {
+		var y = miniGameCamera.y;
+		var x = miniGameCamera.x;
+		if (spawnCD >= SPAWN_SPEED) {
+			var bullet = enemyBullets.recycle(Bullet);
+			enemyBullets.add(bullet);
+			var point = new FlxPoint(0, 1);
+			point.putWeak();
+			bullet.setPosition((Math.random() * (miniGameCamera.width - 20)),
+				20);
+			// bullet.fire(point);
+			bullet.acceleration.y = BULLET_SPEED;
+			spawnCD = 0;
+		} else {
+			spawnCD += elapsed;
+		}
+
+		for (bullet in enemyBullets) {
+			if (bullet.y > miniGameCamera.height) {
+				bullet.kill();
+			}
+		}
 	}
 
 	public function updatePlayerMovement(elapsed:Float) {
@@ -105,5 +137,11 @@ class AgiGameSubState extends MiniGameSubState {
 	public function playerTouchBullet(playerSprite:FlxSprite, bullet:Bullet) {
 		playerSprite.kill();
 		bullet.kill();
+	}
+
+	// TODO: Add Reward Substate that shows the reward for doing well on the mini game and update the player stats.
+	override public function processReward() {
+		// Survive for 30 second times = Max Bonus //Setup in the depot file
+		if (player.alive && time <= 0) {}
 	}
 }
