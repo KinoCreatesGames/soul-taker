@@ -89,9 +89,15 @@ class MiniGameSubState extends FlxSubState {
 	}
 
 	/**
+	 * Empty method for overwriting to calculate reward for any mini game.
+	 */
+	public function processReward() {}
+
+	/**
 	 * Calculates the rewards for training and also closes the substate.
 	 */
 	public function stateEnd() {
+		processReward();
 		FlxG.cameras.remove(miniGameCamera);
 		close();
 	}
