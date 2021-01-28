@@ -9,6 +9,10 @@ class OptionsSubState extends FlxSubState {
 	public var volumeAmountText:FlxText;
 	public var volumeUpButton:FlxButton;
 	public var volumeDownButton:FlxButton;
+	public var skipLabelText:FlxText;
+	public var skipMiniGamesText:FlxText;
+	public var skipUpButton:FlxButton;
+	public var skipDownButton:FlxButton;
 	public var backButton:FlxButton;
 
 	private var save:FlxSave;
@@ -22,6 +26,7 @@ class OptionsSubState extends FlxSubState {
 		save = SaveLoad.Save.createSaveSettings();
 		createTitleText();
 		createOptions();
+		createSkip();
 		super.create();
 	}
 
@@ -75,6 +80,35 @@ class OptionsSubState extends FlxSubState {
 		volumeAmountText.screenCenter(FlxAxes.X);
 		add(volumeAmountText);
 		updateVolume();
+	}
+
+	public function createSkip() {
+		var pos = volumeAmountText.getPosition();
+		var spacing = 48;
+		var horizontalSpacing = 48;
+		var x = volumeDownButton.x;
+		var y = pos.y + spacing;
+		skipLabelText = new FlxText(x, y, -1, 'Skip Mini Games',
+			Globals.FONT_N);
+		x += (horizontalSpacing * 2) + skipLabelText.width;
+		skipDownButton = new FlxButton(x, y, '<-', clickSkip);
+		skipDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		x += horizontalSpacing;
+		skipMiniGamesText = new FlxText(x, y, -1, 'No', Globals.FONT_N);
+		x += horizontalSpacing;
+		skipUpButton = new FlxButton(x, y, '->', clickSkip);
+		skipUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+
+		add(skipLabelText);
+		add(skipDownButton);
+		add(skipMiniGamesText);
+		add(skipUpButton);
+	}
+
+	public function clickSkip() {
+		skipMiniGamesText.text = skipMiniGamesText.text == 'No' ? 'Yes' : 'No';
+		// Update skipMiniGames
+		save.data.skipMiniGames = skipMiniGamesText.text == 'Yes' ? true : false;
 	}
 
 	public function createBackButton() {

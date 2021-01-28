@@ -8,6 +8,8 @@ typedef Actor = {
 	public var atk:Int;
 	public var def:Int;
 	public var agi:Int;
+	public var dex:Int;
+	public var intl:Int;
 }
 
 typedef Monster = {
@@ -40,6 +42,15 @@ typedef GameSaveState = {
 	public var playerHappinessLvl:Int;
 }
 
+typedef GameSettingsSaveState = {
+	public var skipMiniGames:Bool;
+
+	/**
+	 * Volume from 0 to 1 for 0 - 100%
+	 */
+	public var volume:Float;
+}
+
 enum abstract AnimTypes(String) from String to String {
 	public var IDLE:String = 'idle';
 	public var MOVE:String = 'move';
@@ -50,4 +61,12 @@ enum Splash {
 	Delay(imageName:String, seconds:Int);
 	Click(imageName:String);
 	ClickDelay(imageName:String, seconds:Int);
+}
+
+enum Stat {
+	Atk(value:Int);
+	Def(value:Int);
+	Intl(value:Int);
+	Agi(value:Int);
+	Dex(value:Int);
 }

@@ -24,10 +24,14 @@ class PauseSubState extends FlxSubState {
 			resumeGame);
 		resumeButton.screenCenter();
 		resumeButton.y += 40;
+		resumeButton.hoverColor = KColor.BURGUNDY;
+		resumeButton.clickColor = KColor.BURGUNDY;
 		var returnToTitleButton = new TextButton(0, 0, 'To Title',
 			Globals.FONT_N, toTitle);
 		returnToTitleButton.screenCenter();
 		returnToTitleButton.y += 80;
+		returnToTitleButton.hoverColor = KColor.BURGUNDY;
+		returnToTitleButton.clickColor = KColor.BURGUNDY;
 		add(resumeButton);
 		add(returnToTitleButton);
 		super.create();

@@ -283,6 +283,40 @@
                         "max": "int",
                         "defaultValue": "int"
                     }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "5948be16-e39e-468c-8eed-b05b642e276c",
+                    "description": "Actor dexterity in the game.",
+                    "name": "dex",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "caf1230d-a08e-4df6-a8e1-f6e0f79663cd",
+                    "description": "Intelligence of the actor in game",
+                    "name": "intl",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
                 }
             ],
             "lines": [
@@ -293,7 +327,9 @@
                     "atk": 5,
                     "def": 5,
                     "health": 20,
-                    "agi": 5
+                    "agi": 5,
+                    "dex": 5,
+                    "intl": 5
                 }
             ],
             "hidden": false,
