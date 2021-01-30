@@ -154,8 +154,11 @@ class AgiGameSubState extends MiniGameSubState {
 		} else if (!playerSprite.alive && time >= 15) {
 			rating = Great;
 		}
-		openSubState(new RewardSubState(miniGameCamera, player,
-			Agi(player.agi), rating));
-		stateEnd();
+		var rewardState = new RewardSubState(miniGameCamera, player,
+			Agi(player.agi), rating);
+		rewardState.closeCallback = () -> {
+			stateEnd();
+		};
+		openSubState(rewardState);
 	}
 }

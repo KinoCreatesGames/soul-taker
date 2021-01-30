@@ -26,7 +26,7 @@ class RewardSubState extends FlxSubState {
 	public var width:Int;
 	public var height:Int;
 
-	public static inline var STAR_DELAY:Float = 0.25;
+	public static inline var STAR_DELAY:Float = 0.50;
 
 	public static inline var REWARD_GOOD:Int = 2;
 	public static inline var REWARD_GREAT:Int = 4;
@@ -98,20 +98,24 @@ class RewardSubState extends FlxSubState {
 			// Start Sequence
 			// Cycle In Stars One after another
 			starDelay += elapsed;
-			if (starDelay > STAR_DELAY) {
+			if (starDelay > STAR_DELAY && stars.length < 3) {
 				// Add Star + reset timer
 				starDelay = 0;
 				var padding = 48;
 				var spacing = 12;
 				var y = padding;
 				if (stars.length < 1) {
-					stars.add(new Star(0, y));
+					var newStar = new Star(0, y);
+					stars.add(newStar);
+					newStar.camera = mgCamera;
 				} else {
 					// Use previous star position
 					var lastStar = FlxArrayUtil.last(stars.members);
-					stars.add(new Star(cast lastStar.x
+					var newStar = new Star(cast lastStar.x
 						+ lastStar.width
-						+ spacing, y));
+						+ spacing, y);
+					stars.add(newStar);
+					newStar.camera = mgCamera;
 				}
 			}
 		}

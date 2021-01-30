@@ -80,7 +80,7 @@ class MiniGameSubState extends FlxSubState {
 
 		if (time <= 0) {
 			// Perform State End
-			stateEnd();
+			processReward();
 		}
 	}
 
@@ -94,10 +94,9 @@ class MiniGameSubState extends FlxSubState {
 	public function processReward() {}
 
 	/**
-	 * Calculates the rewards for training and also closes the substate.
+	 * Closes the state when you're ready
 	 */
 	public function stateEnd() {
-		processReward();
 		FlxG.cameras.remove(miniGameCamera);
 		close();
 	}

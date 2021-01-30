@@ -1,11 +1,11 @@
 package game.states;
 
-class DexGameSubState extends MiniGameSubState {
+class IntlGameSubState extends MiniGameSubState {
 	override public function processReward() {
 		var rating = null;
 		// TODO: Add Rating Score criteria
 		var rewardState = new RewardSubState(miniGameCamera, player,
-			Dex(player.dex), rating);
+			Intl(player.intl), rating);
 		rewardState.closeCallback = () -> {
 			stateEnd();
 		};
