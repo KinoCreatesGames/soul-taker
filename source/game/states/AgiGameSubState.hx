@@ -57,6 +57,7 @@ class AgiGameSubState extends MiniGameSubState {
 		updateBullets(elapsed);
 		updatePlayerMovement(elapsed);
 		updateGameOver();
+		updateCollisions();
 	}
 
 	public function updateBullets(elapsed:Float) {

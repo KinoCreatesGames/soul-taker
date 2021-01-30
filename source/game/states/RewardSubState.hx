@@ -98,7 +98,7 @@ class RewardSubState extends FlxSubState {
 			// Start Sequence
 			// Cycle In Stars One after another
 			starDelay += elapsed;
-			if (starDelay > STAR_DELAY && stars.length < 3) {
+			if (starDelay > STAR_DELAY && stars.length < starAmount(rating)) {
 				// Add Star + reset timer
 				starDelay = 0;
 				var padding = 48;
@@ -123,6 +123,7 @@ class RewardSubState extends FlxSubState {
 
 	public function updatePlayerStats() {
 		var reward = ratingReward(rating);
+		player.addAffection(affectionReward());
 		switch (upgradeStat) {
 			case Atk(_):
 				player.addToStat(Atk(reward));
@@ -148,6 +149,17 @@ class RewardSubState extends FlxSubState {
 		}
 	}
 
+	public function starAmount(rating:Rating):Int {
+		return switch (rating) {
+			case Good:
+				1;
+			case Great:
+				2;
+			case Amazing:
+				3;
+		}
+	}
+
 	public function affectionReward():Int {
 		return REWARD_AFFECTION;
 	}
@@ -159,6 +171,7 @@ class RewardSubState extends FlxSubState {
 	}
 
 	public function endState() {
+		updatePlayerStats();
 		close();
 	}
 }

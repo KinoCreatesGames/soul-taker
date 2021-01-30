@@ -7,7 +7,7 @@ class Bullet extends FlxSprite {
 	}
 
 	public function create() {
-		makeGraphic(8, 8, KColor.SNOW);
+		makeGraphic(16, 16, KColor.SNOW);
 	}
 
 	public function fire(direction:FlxPoint) {}
