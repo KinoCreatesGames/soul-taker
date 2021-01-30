@@ -64,9 +64,21 @@ enum Splash {
 }
 
 enum Stat {
-	Atk(value:Int);
-	Def(value:Int);
-	Intl(value:Int);
-	Agi(value:Int);
-	Dex(value:Int);
+	Atk(?value:Int);
+	Def(?value:Int);
+	Intl(?value:Int);
+	Agi(?value:Int);
+	Dex(?value:Int);
+}
+
+/**
+ * Rating in Minigames
+ * Good - Average Reward
+ * Great - Better Reward
+ * Amazing - Highest Score Reward
+ */
+enum Rating {
+	Good;
+	Great;
+	Amazing;
 }

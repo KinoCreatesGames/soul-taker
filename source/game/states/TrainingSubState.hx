@@ -94,6 +94,8 @@ class TrainingSubState extends FlxSubState {
 		var y = background.y + padding + innerTvStart;
 		var width = (WIDTH - padding * 2) - (innerTvStart * 2);
 		var height = (HEIGHT - padding * 2) - (innerTvStart * 2);
+		// Remove Happiness From Bar
+
 		switch (channelIndex) {
 			case 0: // Atk
 				openSubState(new MiniGameSubState(cast x, cast y, width,

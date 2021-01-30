@@ -122,7 +122,11 @@ class AgiGameSubState extends MiniGameSubState {
 
 	public function updateGameOver() {
 		if (!playerSprite.alive) {
-			stateEnd();
+			processReward();
+		}
+
+		if (time <= 0) {
+			processReward();
 		}
 	}
 
@@ -142,6 +146,16 @@ class AgiGameSubState extends MiniGameSubState {
 	// TODO: Add Reward Substate that shows the reward for doing well on the mini game and update the player stats.
 	override public function processReward() {
 		// Survive for 30 second times = Max Bonus //Setup in the depot file
-		if (player.alive && time <= 0) {}
+		var rating = null;
+		if (playerSprite.alive && time <= 0) {
+			rating = Amazing;
+		} else if (!playerSprite.alive && time >= 25) {
+			rating = Good;
+		} else if (!playerSprite.alive && time >= 15) {
+			rating = Great;
+		}
+		openSubState(new RewardSubState(miniGameCamera, player,
+			Agi(player.agi), rating));
+		stateEnd();
 	}
 }
