@@ -150,9 +150,9 @@ class AgiGameSubState extends MiniGameSubState {
 		var rating = null;
 		if (playerSprite.alive && time <= 0) {
 			rating = Amazing;
-		} else if (!playerSprite.alive && time >= 25) {
+		} else if (!playerSprite.alive && time <= 30 && time > 15) {
 			rating = Good;
-		} else if (!playerSprite.alive && time >= 15) {
+		} else if (!playerSprite.alive && time <= 15 && time > 0) {
 			rating = Great;
 		}
 		var rewardState = new RewardSubState(miniGameCamera, player,

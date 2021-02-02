@@ -13,6 +13,10 @@ class OptionsSubState extends FlxSubState {
 	public var skipMiniGamesText:FlxText;
 	public var skipUpButton:FlxButton;
 	public var skipDownButton:FlxButton;
+	public var textSpeedLabelText:FlxText;
+	public var textSpeedUpButton:FlxButton;
+	public var textSpeedModeText:FlxText;
+	public var textSpeedDownButton:FlxButton;
 	public var backButton:FlxButton;
 
 	private var save:FlxSave;
@@ -27,6 +31,7 @@ class OptionsSubState extends FlxSubState {
 		createTitleText();
 		createOptions();
 		createSkip();
+		createTextSpeed();
 		super.create();
 	}
 
@@ -103,12 +108,67 @@ class OptionsSubState extends FlxSubState {
 		add(skipDownButton);
 		add(skipMiniGamesText);
 		add(skipUpButton);
+		updateSkip();
 	}
 
 	public function clickSkip() {
 		skipMiniGamesText.text = skipMiniGamesText.text == 'No' ? 'Yes' : 'No';
 		// Update skipMiniGames
 		save.data.skipMiniGames = skipMiniGamesText.text == 'Yes' ? true : false;
+	}
+
+	public function createTextSpeed() {
+		var pos = skipLabelText.getPosition();
+		var spacing = 48;
+		var horizontalSpacing = 48;
+		var x = volumeDownButton.x;
+		var y = pos.y + spacing;
+		textSpeedLabelText = new FlxText(x, y, -1, 'Text Speed',
+			Globals.FONT_N);
+		x += (horizontalSpacing * 2) + skipLabelText.width;
+		textSpeedDownButton = new FlxButton(x, y, '<-', clickSpeedDown);
+		textSpeedDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		x += horizontalSpacing;
+		textSpeedModeText = new FlxText(x, y, -1, 'Normal', Globals.FONT_N);
+		x += horizontalSpacing;
+		textSpeedUpButton = new FlxButton(x, y, '->', clickSpeedUp);
+		textSpeedUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+
+		add(textSpeedLabelText);
+		add(textSpeedDownButton);
+		add(textSpeedModeText);
+		add(textSpeedUpButton);
+		updateTextMode();
+	}
+
+	public function clickSpeedUp() {
+		switch (textSpeedModeText.text) {
+			case 'Normal':
+				textSpeedModeText.text = 'Fast';
+			case 'Slow':
+				textSpeedModeText.text = 'Normal';
+			case 'Fast':
+				textSpeedModeText.text = 'Slow';
+			case _:
+				// Do nothing
+		}
+		save.data.modeText = textSpeedModeText.text;
+		updateTextMode();
+	}
+
+	public function clickSpeedDown() {
+		switch (textSpeedModeText.text) {
+			case 'Normal':
+				textSpeedModeText.text = 'Slow';
+			case 'Slow':
+				textSpeedModeText.text = 'Fast';
+			case 'Fast':
+				textSpeedModeText.text = 'Normal';
+			case _:
+				// Do nothing
+		}
+		save.data.modeText = textSpeedModeText.text;
+		updateTextMode();
 	}
 
 	public function createBackButton() {
@@ -144,5 +204,14 @@ class OptionsSubState extends FlxSubState {
 		var volume:Int = Math.round(FlxG.sound.volume * 100);
 		volumeBar.value = volume;
 		volumeAmountText.text = volume + '%';
+	}
+
+	public function updateTextMode() {
+		trace(textSpeedModeText.text, save.data.modeText);
+		textSpeedModeText.text = save.data.modeText;
+	}
+
+	public function updateSkip() {
+		skipMiniGamesText.text = save.data.skipMiniGames ? 'Yes' : 'No';
 	}
 }

@@ -20,7 +20,7 @@ class MiniGameSubState extends FlxSubState {
 		player = gal;
 		time = DEFAULT_TIME;
 		createCamera(x, y, width, height);
-		trace(x, y, width, height);
+
 		super();
 	}
 

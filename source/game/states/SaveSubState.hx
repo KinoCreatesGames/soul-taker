@@ -25,6 +25,7 @@ class SaveSubState extends FileSubState {
 			days: currentData.days,
 			saveIndex: file.saveID,
 			playerStats: cast {
+				name: player.name,
 				atk: player.atk,
 				def: player.def,
 				agi: player.agi,
