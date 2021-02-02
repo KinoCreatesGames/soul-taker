@@ -1,0 +1,471 @@
+{
+    "sheets": [
+        {
+            "name": "barks",
+            "description": "Random messages that will be triggered when you click on the gal.",
+            "displayColumn": "id",
+            "guid": "79ee0d51-d381-4c00-a857-a09b76322ce8",
+            "columns": [
+                {
+                    "typeStr": "text",
+                    "guid": "3d956e44-eb36-4f43-835a-2452dd7a18e7",
+                    "name": "name",
+                    "description": "The name of the message sender",
+                    "defaultValue": "Koyuki",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "b787ce00-2afa-41e5-b1f6-ae7bac9a104f",
+                    "description": "The minimum amount of affection for when this bark will trigger.",
+                    "name": "affectionMin",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "51015d11-0b0b-4222-a291-8180af0ef51a",
+                    "description": "The maximum amount of affection while this bark will trigger.",
+                    "name": "affectionMax",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 25,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "longtext",
+                    "guid": "147f0fe1-20e1-4027-ba85-5da31906c349",
+                    "name": "message",
+                    "description": "The message of the bark.",
+                    "defaultValue": "Hello",
+                    "iconName": "newLongText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "longtext"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "2db4629a-f021-4fcc-95b8-5aa5fc76597f",
+                    "id": "0",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Hello"
+                },
+                {
+                    "guid": "fe7505ed-7772-4034-9a06-d94a6b1719b9",
+                    "id": "1",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Are you that interested in what I'm saying?"
+                },
+                {
+                    "guid": "3defe2e2-e60b-4db8-a6d2-24cceddf4548",
+                    "id": "2",
+                    "name": "Koyuki",
+                    "affectionMin": 0,
+                    "affectionMax": 25,
+                    "message": "Maybe when you get to know me better, I'll be able to tell you more about me."
+                },
+                {
+                    "guid": "9764fbc7-feac-4ddd-ac94-4029d2e28529",
+                    "id": "3",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "As my mentor said, \"A hero never givues up.\" Who is my mentor? T-that's a secret.",
+                    "affectionMin": 25
+                },
+                {
+                    "guid": "3f2f24cd-72c0-4175-95e7-2a3b7d0ac1e2",
+                    "id": "4",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "You gotta have dreams and honor.",
+                    "affectionMin": 25
+                },
+                {
+                    "guid": "5e4d6823-4ad3-4685-bed8-1d0f4c794247",
+                    "id": "5",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "Did you know...I'm saving up for a giant robot!?",
+                    "affectionMin": 25
+                },
+                {
+                    "guid": "b6748d66-d35d-4db8-976c-f1efc89305d2",
+                    "id": "6",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "Obviously the best special moves have to have beams!!",
+                    "affectionMin": 25
+                },
+                {
+                    "guid": "e488395e-2e9e-4d69-a655-17f221a40499",
+                    "id": "7",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "In your city, are the heros just walking around? They seem so common from the shows I watched.",
+                    "affectionMin": 25
+                },
+                {
+                    "guid": "679455d8-b53e-447f-83ed-aa36f701fcda",
+                    "id": "8",
+                    "name": "Koyuki",
+                    "affectionMax": 100,
+                    "message": "Thanks for teaching me so much...mentor. One day I hope we can visit your world together.",
+                    "affectionMin": 75
+                },
+                {
+                    "guid": "3562b8db-277e-4170-980a-d3757f23f6b6",
+                    "id": "9",
+                    "name": "Koyuki",
+                    "affectionMax": 100,
+                    "message": "People always thought I was an oddball, but I didn't let it stop me from being me!",
+                    "affectionMin": 75
+                },
+                {
+                    "guid": "6a538230-1518-414c-9d4b-b62d6407a97d",
+                    "id": "10",
+                    "name": "Koyuki",
+                    "affectionMax": 100,
+                    "message": "You want to see me without my glasses? W-why?",
+                    "affectionMin": 75
+                },
+                {
+                    "guid": "1f634d11-7c49-43a2-8b4f-f9313cc1f995",
+                    "id": "11",
+                    "name": "Koyuki",
+                    "affectionMin": 75,
+                    "affectionMax": 100,
+                    "message": "I'm glad you're here; it was lonely before."
+                },
+                {
+                    "guid": "fea4cfc1-30a3-4e6e-a9a7-a07987ef19dd",
+                    "id": "12",
+                    "name": "Koyuki",
+                    "affectionMax": 75,
+                    "message": "I think I like you just a bit more now...",
+                    "affectionMin": 50
+                },
+                {
+                    "guid": "5c693201-8007-4c01-9fe4-ed720596f044",
+                    "id": "13",
+                    "name": "Koyuki",
+                    "affectionMax": 50,
+                    "message": "Minus ULTRA!!!! Wait...what? That's not how it goes?!",
+                    "affectionMin": 25
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "actors",
+            "description": "Information on actor stats and their base stats.",
+            "displayColumn": "id",
+            "guid": "da8505fc-f2e8-4663-bf3b-e752c233e6ed",
+            "columns": [
+                {
+                    "typeStr": "text",
+                    "guid": "6c47e0da-4850-4b8c-9c16-f07e3ac997dd",
+                    "name": "name",
+                    "description": "Name of the actor",
+                    "defaultValue": "Base",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "b7e5f8cf-cce2-4bb0-9fe8-3789a6870fad",
+                    "description": "The amount of atk the actor has.",
+                    "name": "atk",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "da9a7e3e-73c2-441f-aab0-fdbae65e20b6",
+                    "description": "The amount of defense the actor has.",
+                    "name": "def",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "330c9eee-15de-493f-b639-7a0b455058a1",
+                    "description": "The amount of health the actor has.",
+                    "name": "health",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 0,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "15f81c75-dd3b-41e7-8132-8a621f902b67",
+                    "description": "Agility the character has which determines turn order.",
+                    "name": "agi",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "5948be16-e39e-468c-8eed-b05b642e276c",
+                    "description": "Actor dexterity in the game.",
+                    "name": "dex",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "caf1230d-a08e-4df6-a8e1-f6e0f79663cd",
+                    "description": "Intelligence of the actor in game",
+                    "name": "intl",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "2a713adc-7402-4407-bfdc-042aa0a65f24",
+                    "id": "0",
+                    "name": "Koyuki",
+                    "atk": 5,
+                    "def": 5,
+                    "health": 20,
+                    "agi": 5,
+                    "dex": 5,
+                    "intl": 5
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "cutscene",
+            "description": "Sheet for doing cutscene skits in game.",
+            "displayColumn": "id",
+            "guid": "6124e31b-61f4-4ee6-996c-a24429f73c00",
+            "columns": [
+                {
+                    "typeStr": "list",
+                    "guid": "12ad0212-d5ea-416e-9264-47793808b47b",
+                    "name": "cutsceneText",
+                    "description": "List of cutscene text in the game",
+                    "sheet": "b22564a7-ff9a-4722-aa9c-762a94b41b0b",
+                    "defaultValue": [],
+                    "iconName": "newList",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text"
+                    }
+                },
+                {
+                    "typeStr": "text",
+                    "guid": "ce4f82fc-559d-467d-82aa-e4eaa1b26973",
+                    "name": "name",
+                    "description": "The name of the cutscene",
+                    "defaultValue": "Intro",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "afec7e6f-d93e-424a-8b4b-9965d45a21d0",
+                    "id": "0",
+                    "cutsceneText": [
+                        {
+                            "guid": "bed6a640-903a-469f-a12a-7496f8c63302",
+                            "text": "It all started many years ago.",
+                            "id": "0",
+                            "delay": 4
+                        },
+                        {
+                            "guid": "70fb87ac-422b-460f-9f0e-4beabe8016f8",
+                            "text": "A war occured with the human world and the demon world. ",
+                            "id": "1",
+                            "delay": 4
+                        },
+                        {
+                            "guid": "a92649b3-668a-4fca-9570-165144e8a5de",
+                            "text": "At that point the demon were sealed away for good.",
+                            "id": "2",
+                            "delay": 4
+                        }
+                    ],
+                    "name": "Intro"
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "cutsceneText",
+            "description": "list@6124e31b-61f4-4ee6-996c-a24429f73c00",
+            "displayColumn": "id",
+            "guid": "b22564a7-ff9a-4722-aa9c-762a94b41b0b",
+            "columns": [
+                {
+                    "typeStr": "longtext",
+                    "guid": "9021c23f-bdeb-4730-af2a-454b072ae7cb",
+                    "name": "text",
+                    "description": "The text content ",
+                    "defaultValue": "It all started many years ago.",
+                    "iconName": "newLongText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "longtext"
+                    }
+                },
+                {
+                    "typeStr": "int",
+                    "guid": "58a57904-4257-46e3-998d-1d328d9c7d8c",
+                    "description": "The amount of delay before advancing to the next piece of text",
+                    "name": "delay",
+                    "min": -10000,
+                    "max": 100000,
+                    "defaultValue": 4,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                }
+            ],
+            "lines": [],
+            "hidden": true,
+            "isProps": false,
+            "parentSheetGUID": "6124e31b-61f4-4ee6-996c-a24429f73c00",
+            "columnGUID": "12ad0212-d5ea-416e-9264-47793808b47b"
+        }
+    ]
+}
