@@ -51,7 +51,11 @@ jobs:
       
     - name: lix download
       run: lix download
-
+      
+      # Installs Lime
+    - name: lix install lime
+      run: lix install haxelib:lime
+      
     # Runs a single command using the runners shell
     - name: Build Game
       run: npm run build:web
