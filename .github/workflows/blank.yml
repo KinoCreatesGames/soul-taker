@@ -58,7 +58,7 @@ jobs:
       
     # Runs a single command using the runners shell
     - name: Build Game
-      run: npm run build:web
+      run: lime build html5
       
       # Runs a single command using the runners shell
     - name: Create Documentation
