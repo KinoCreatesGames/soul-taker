@@ -11,6 +11,7 @@ class CutsceneState extends FlxState {
 	public var skipText:FlxText;
 	public var skipThreshold:Float;
 	public var skipPerc:Int;
+	public var textComplete:Bool;
 
 	/** *  Delay before transitioning to the next text in seconds.
 	 */
@@ -95,7 +96,7 @@ class CutsceneState extends FlxState {
 
 	public function updateText(elapsed:Float) {
 		var currentText = textList[textIndex % textList.length];
-		var delay = SaveLoad.Save.TextMode == 'Slow' ? currentText.delay * 2.5 : currentText.delay;
+		var delay = currentText.delay;
 		if (textIndex < textList.length - 1) {
 			if (textDelay > delay) {
 				transitionText();
@@ -103,15 +104,19 @@ class CutsceneState extends FlxState {
 		} else if (textDelay > delay) {
 			transitionToScene();
 		}
-		textDelay += elapsed;
+		if (textComplete) {
+			textDelay += elapsed;
+		}
 	}
 
 	public function transitionText() {
 		textIndex++;
-
+		textComplete = false;
 		var currentText = textList[textIndex % textList.length];
 		sceneText.resetText(currentText.text);
-		sceneText.start(SaveLoad.Save.TextSpeed);
+		sceneText.start(SaveLoad.Save.TextSpeed, false, false, [SPACE], () -> {
+			textComplete = true;
+		});
 		textDelay = 0;
 	}
 
