@@ -90,10 +90,16 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 			var newPosition = new FlxPoint(x, y);
 			newPosition.putWeak();
 			var diffPosition = newPosition.subtractPoint(currentPosition);
-			var relativeX = currentPosition.x - x;
-			var relativeY = currentPosition.y - y;
+			// Adjust the relative components by the new position of the container
+			var relativeX = currentPosition.x - position.x;
+			var relativeY = currentPosition.y - position.y;
+			trace(diffPosition, currentPosition, 'Relatives', relativeX,
+				relativeY);
+			trace('Member start position', member.x, member.y);
 			member.x += diffPosition.x + relativeX;
 			member.y += diffPosition.y + relativeY;
+			trace('Moving member', member.x, member.y);
 		});
+		position.set(x, y);
 	}
 }

@@ -8,6 +8,7 @@ import game.chars.Char;
 class Gal extends Char {
 	/**
 	 * The current happiness Gal has when doing a task.
+	 * Have Gal only walk in prescribed areas.
 	 */
 	public var happiness:Float;
 
@@ -20,7 +21,7 @@ class Gal extends Char {
 	public var stateTimer:Float;
 	public var walkingPoint:FlxPoint;
 
-	public static inline var STATE_TIME:Float = 2.5;
+	public static inline var STATE_TIME:Float = 10.5;
 	public static inline var SPEED:Int = 75;
 
 	public function new(x:Float, y:Float, data:Actor) {
