@@ -50,18 +50,26 @@ class Gal extends Char {
 			var newPoint = walkingPoint.copyTo(new FlxPoint(0, 0));
 			var walkVec:FlxVector = newPoint.subtractPoint(this.getPosition());
 			var walkingDirection = walkVec.normalize();
-			if (walkingDirection.y < 0) {
-				animation.play('up');
-			} else if (walkingDirection.y > 0) {
-				animation.play('down');
-			} else if (walkingDirection.x > 0) {
-				facing = FlxObject.RIGHT;
-				animation.play('right');
-			} else if (walkingDirection.x < 0) {
-				facing = FlxObject.LEFT;
-				animation.play('right');
+
+			if (this.getPosition().distanceTo(walkingPoint) > 25) {
+				FlxVelocity.moveTowardsPoint(this, walkingPoint, SPEED);
+				if (walkingDirection.y < 0) {
+					animation.play('up');
+				} else if (walkingDirection.y > 0) {
+					animation.play('down');
+				} else if (walkingDirection.x > 0) {
+					facing = FlxObject.RIGHT;
+					animation.play('right');
+				} else if (walkingDirection.x < 0) {
+					facing = FlxObject.LEFT;
+					animation.play('right');
+				}
+			} else {
+				// Stop all animations and path finding
+				animation.stop();
+				velocity.set(0, 0);
 			}
-			FlxVelocity.moveTowardsPoint(this, walkingPoint, SPEED);
+
 			stateTimer += elapsed;
 		} else if (stateTimer > STATE_TIME || walkingPoint == null) {
 			// Reset Timer & Shift Walking Point
