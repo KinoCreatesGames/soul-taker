@@ -106,14 +106,15 @@ class TitleState extends FlxState {
 			pressStartText.visible = false;
 		} else if (pressStartText.visible) {}
 
+		var fadeTime = 0.25;
 		if (!pressStartText.visible && !pressStartText.isFlickering()
 			&& completeFadeStart == false) {
-			playButton.fadeIn(1);
+			playButton.fadeIn(fadeTime);
 			if (playButton.alpha >= .9) {
-				continueButton.fadeIn(1);
+				continueButton.fadeIn(fadeTime);
 			}
 			if (continueButton.alpha >= .9) {
-				optionsButton.fadeIn(1);
+				optionsButton.fadeIn(fadeTime);
 				#if !desktop
 				completeFadeStart = true;
 				#end
@@ -121,7 +122,7 @@ class TitleState extends FlxState {
 
 			#if desktop
 			if (optionsButton.alpha >= .9) {
-				exitButton.fadeIn(1);
+				exitButton.fadeIn(fadeTime);
 				completeFadeStart = true;
 			}
 			exitButton.visible = true;
