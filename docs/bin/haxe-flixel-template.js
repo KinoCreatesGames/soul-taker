@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "35";
+	app.meta.h["build"] = "36";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47235,18 +47235,23 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 			var newPoint = this.walkingPoint.copyTo(new flixel_math_FlxPoint(0,0));
 			var walkVec = newPoint.subtractPoint(this.getPosition());
 			var walkingDirection = flixel_math_FlxVector.normalize(walkVec);
-			if(walkingDirection.y < 0) {
-				this.animation.play("up");
-			} else if(walkingDirection.y > 0) {
-				this.animation.play("down");
-			} else if(walkingDirection.x > 0) {
-				this.set_facing(16);
-				this.animation.play("right");
-			} else if(walkingDirection.x < 0) {
-				this.set_facing(1);
-				this.animation.play("right");
+			if(this.getPosition().distanceTo(this.walkingPoint) > 25) {
+				flixel_math_FlxVelocity.moveTowardsPoint(this,this.walkingPoint,75);
+				if(walkingDirection.y < 0) {
+					this.animation.play("up");
+				} else if(walkingDirection.y > 0) {
+					this.animation.play("down");
+				} else if(walkingDirection.x > 0) {
+					this.set_facing(16);
+					this.animation.play("right");
+				} else if(walkingDirection.x < 0) {
+					this.set_facing(1);
+					this.animation.play("right");
+				}
+			} else {
+				this.animation.stop();
+				this.velocity.set(0,0);
 			}
-			flixel_math_FlxVelocity.moveTowardsPoint(this,this.walkingPoint,75);
 			this.stateTimer += elapsed;
 		} else if(this.stateTimer > 10.5 || this.walkingPoint == null) {
 			this.stateTimer = 0;
@@ -47259,7 +47264,7 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 			_g.set_x(_g.x + xRange);
 			var _g = this.walkingPoint;
 			_g.set_y(_g.y + yRange);
-			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 76, className : "game.chars.Gal", methodName : "idle"});
+			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 84, className : "game.chars.Gal", methodName : "idle"});
 		}
 	}
 	,addToStat: function(stat) {
@@ -48949,13 +48954,10 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 			var diffPosition = newPosition.subtractPoint(currentPosition);
 			var relativeX = currentPosition.x - _gthis.position.x;
 			var relativeY = currentPosition.y - _gthis.position.y;
-			haxe_Log.trace(diffPosition,{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 96, className : "game.ui.StatWindow", methodName : "move", customParams : [currentPosition,"Relatives",relativeX,relativeY]});
-			haxe_Log.trace("Member start position",{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 98, className : "game.ui.StatWindow", methodName : "move", customParams : [member.x,member.y]});
 			var _g = member;
 			_g.set_x(_g.x + (diffPosition.x + relativeX));
 			var _g = member;
 			_g.set_y(_g.y + (diffPosition.y + relativeY));
-			haxe_Log.trace("Moving member",{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 101, className : "game.ui.StatWindow", methodName : "move", customParams : [member.x,member.y]});
 		});
 		this.position.set(x,y);
 	}
@@ -67145,7 +67147,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 813214;
+	this.version = 911332;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
