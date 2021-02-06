@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "34";
+	app.meta.h["build"] = "35";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47231,7 +47231,7 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 		this.ai.update(elapsed);
 	}
 	,idle: function(elapsed) {
-		if(this.walkingPoint != null && this.stateTimer < 2.5) {
+		if(this.walkingPoint != null && this.stateTimer < 10.5) {
 			var newPoint = this.walkingPoint.copyTo(new flixel_math_FlxPoint(0,0));
 			var walkVec = newPoint.subtractPoint(this.getPosition());
 			var walkingDirection = flixel_math_FlxVector.normalize(walkVec);
@@ -47248,7 +47248,7 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 			}
 			flixel_math_FlxVelocity.moveTowardsPoint(this,this.walkingPoint,75);
 			this.stateTimer += elapsed;
-		} else if(this.stateTimer > 2.5 || this.walkingPoint == null) {
+		} else if(this.stateTimer > 10.5 || this.walkingPoint == null) {
 			this.stateTimer = 0;
 			var signX = Math.random() < 0.5 ? -1 : 1;
 			var signY = Math.random() < 0.5 ? -1 : 1;
@@ -47259,7 +47259,7 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 			_g.set_x(_g.x + xRange);
 			var _g = this.walkingPoint;
 			_g.set_y(_g.y + yRange);
-			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 75, className : "game.chars.Gal", methodName : "idle"});
+			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 76, className : "game.chars.Gal", methodName : "idle"});
 		}
 	}
 	,addToStat: function(stat) {
@@ -47812,6 +47812,7 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 		if(flixel_FlxG.mouse.overlaps(this.player)) {
 			if(this.statWindow.visible == false) {
 				this.statWindow.move(this.player.x,this.player.y - 274);
+				haxe_Log.trace(this.player.x,{ fileName : "source/game/states/HubState.hx", lineNumber : 122, className : "game.states.HubState", methodName : "updateMouseOverPlayer", customParams : [this.player.y,this.statWindow.members[0].x]});
 				this.statWindow.show();
 				this.statWindow.updateStats();
 			}
@@ -48442,9 +48443,10 @@ game_states_TitleState.prototype = $extend(flixel_FlxState.prototype,{
 		} else {
 			var tmp = this.pressStartText.visible;
 		}
+		var fadeTime = 0.25;
 		if(!this.pressStartText.visible && !flixel_effects_FlxFlicker.isFlickering(this.pressStartText) && this.completeFadeStart == false) {
 			var sprite = this.playButton;
-			var Duration = 1;
+			var Duration = fadeTime;
 			if(Duration == null) {
 				Duration = 1;
 			}
@@ -48458,7 +48460,7 @@ game_states_TitleState.prototype = $extend(flixel_FlxState.prototype,{
 			flixel_tweens_FlxTween.num(sprite.alpha,1,Duration,{ onComplete : null},tmp);
 			if(this.playButton.alpha >= .9) {
 				var sprite = this.continueButton;
-				var Duration = 1;
+				var Duration = fadeTime;
 				if(Duration == null) {
 					Duration = 1;
 				}
@@ -48473,7 +48475,7 @@ game_states_TitleState.prototype = $extend(flixel_FlxState.prototype,{
 			}
 			if(this.continueButton.alpha >= .9) {
 				var sprite = this.optionsButton;
-				var Duration = 1;
+				var Duration = fadeTime;
 				if(Duration == null) {
 					Duration = 1;
 				}
@@ -48937,6 +48939,7 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 		this.set_visible(true);
 	}
 	,move: function(x,y) {
+		var _gthis = this;
 		Lambda.iter(this.members,function(member) {
 			var currentPosition = member.getPosition();
 			var newPosition = new flixel_math_FlxPoint(x,y);
@@ -48944,13 +48947,17 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 				newPosition.put();
 			}
 			var diffPosition = newPosition.subtractPoint(currentPosition);
-			var relativeX = currentPosition.x - x;
-			var relativeY = currentPosition.y - y;
+			var relativeX = currentPosition.x - _gthis.position.x;
+			var relativeY = currentPosition.y - _gthis.position.y;
+			haxe_Log.trace(diffPosition,{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 96, className : "game.ui.StatWindow", methodName : "move", customParams : [currentPosition,"Relatives",relativeX,relativeY]});
+			haxe_Log.trace("Member start position",{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 98, className : "game.ui.StatWindow", methodName : "move", customParams : [member.x,member.y]});
 			var _g = member;
 			_g.set_x(_g.x + (diffPosition.x + relativeX));
 			var _g = member;
 			_g.set_y(_g.y + (diffPosition.y + relativeY));
+			haxe_Log.trace("Moving member",{ fileName : "source/game/ui/StatWindow.hx", lineNumber : 101, className : "game.ui.StatWindow", methodName : "move", customParams : [member.x,member.y]});
 		});
+		this.position.set(x,y);
 	}
 	,__class__: game_ui_StatWindow
 });
@@ -67138,7 +67145,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 616456;
+	this.version = 813214;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109725,7 +109732,7 @@ flixel_util_FlxSpriteUtil.flashGfx = flixel_util_FlxSpriteUtil.flashGfxSprite.ge
 flixel_util_LabelValuePair._pool = new flixel_util_FlxPool_$flixel_$util_$LabelValuePair(flixel_util_LabelValuePair);
 game_SaveLoad.SAVE_SETTINGS = "SoulSettings";
 game_SaveLoad.SAVE_DATA_PREFIX = "SoulData";
-game_chars_Gal.STATE_TIME = 2.5;
+game_chars_Gal.STATE_TIME = 10.5;
 game_chars_Gal.SPEED = 75;
 game_ext_KColor.WINTER_SKY = -14651649;
 game_ext_KColor.RICH_BLACK = -15986934;
