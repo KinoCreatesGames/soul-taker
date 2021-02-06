@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "33";
+	app.meta.h["build"] = "34";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -4347,7 +4347,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fmusic%2Fmusic-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R10R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R11R6tgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3R8R5R12R6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R13R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i18570R3R4R5R14R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R15R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR17y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R16R5y26:flixel%2Fsounds%2Fbeep.mp3R18aR20y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i33629R3y5:SOUNDR5R19R18aR17R19hgoR2i5794R3R22R5R21R18aR20R21hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R23R24y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R29R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R30R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fmusic%2Fmusic-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3R8R5R13R6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R14R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i18570R3R4R5R15R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i33629R3y5:SOUNDR5R20R19aR18R20hgoR2i5794R3R23R5R22R19aR21R22hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -47160,6 +47160,17 @@ game_SaveLoad.prototype = $extend(flixel_FlxBasic.prototype,{
 	,__class__: game_SaveLoad
 	,__properties__: $extend(flixel_FlxBasic.prototype.__properties__,{get_SkipMiniGames:"get_SkipMiniGames",get_TextMode:"get_TextMode",get_TextSpeed:"get_TextSpeed"})
 });
+var game_State = function(initialState) {
+	this.currentState = initialState;
+};
+$hxClasses["game.State"] = game_State;
+game_State.__name__ = "game.State";
+game_State.prototype = {
+	update: function(elapsed) {
+		this.currentState(elapsed);
+	}
+	,__class__: game_State
+};
 var game_chars_Bullet = function() {
 	flixel_FlxSprite.call(this);
 	this.create();
@@ -47200,13 +47211,58 @@ game_chars_Char.prototype = $extend(flixel_FlxSprite.prototype,{
 var game_chars_Gal = function(x,y,data) {
 	game_chars_Char.call(this,x,y,data);
 	this.happiness = 75;
-	this.makeGraphic(64,64,-264717);
+	this.ai = new game_State($bind(this,this.idle));
+	this.stateTimer = 0;
+	this.walkingPoint = null;
+	this.loadGraphic("assets/images/martha-test.png",true,32,32);
+	this._facingFlip.h[1] = { x : true, y : false};
+	this._facingFlip.h[16] = { x : false, y : false};
+	var fps = 6;
+	this.animation.add("down",[0,1,2],fps,false);
+	this.animation.add("right",[6,7,8],fps,false);
+	this.animation.add("up",[18,19,20],fps,false);
 };
 $hxClasses["game.chars.Gal"] = game_chars_Gal;
 game_chars_Gal.__name__ = "game.chars.Gal";
 game_chars_Gal.__super__ = game_chars_Char;
 game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
-	addToStat: function(stat) {
+	update: function(elapsed) {
+		game_chars_Char.prototype.update.call(this,elapsed);
+		this.ai.update(elapsed);
+	}
+	,idle: function(elapsed) {
+		if(this.walkingPoint != null && this.stateTimer < 2.5) {
+			var newPoint = this.walkingPoint.copyTo(new flixel_math_FlxPoint(0,0));
+			var walkVec = newPoint.subtractPoint(this.getPosition());
+			var walkingDirection = flixel_math_FlxVector.normalize(walkVec);
+			if(walkingDirection.y < 0) {
+				this.animation.play("up");
+			} else if(walkingDirection.y > 0) {
+				this.animation.play("down");
+			} else if(walkingDirection.x > 0) {
+				this.set_facing(16);
+				this.animation.play("right");
+			} else if(walkingDirection.x < 0) {
+				this.set_facing(1);
+				this.animation.play("right");
+			}
+			flixel_math_FlxVelocity.moveTowardsPoint(this,this.walkingPoint,75);
+			this.stateTimer += elapsed;
+		} else if(this.stateTimer > 2.5 || this.walkingPoint == null) {
+			this.stateTimer = 0;
+			var signX = Math.random() < 0.5 ? -1 : 1;
+			var signY = Math.random() < 0.5 ? -1 : 1;
+			var xRange = Math.random() * 100 * signX;
+			var yRange = Math.random() * 100 * signY;
+			this.walkingPoint = this.getPosition().copyTo(new flixel_math_FlxPoint(0,0));
+			var _g = this.walkingPoint;
+			_g.set_x(_g.x + xRange);
+			var _g = this.walkingPoint;
+			_g.set_y(_g.y + yRange);
+			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 75, className : "game.chars.Gal", methodName : "idle"});
+		}
+	}
+	,addToStat: function(stat) {
 		switch(stat._hx_index) {
 		case 0:
 			var value = stat.value;
@@ -47496,6 +47552,7 @@ var game_states_CutsceneState = function(newState,textInfo) {
 	this.textIndex = -1;
 	this.skipThreshold = 0;
 	this.skipPerc = 0;
+	this.textComplete = false;
 	this.textList = textInfo;
 	this.nextState = newState;
 	this.textDelay = 0;
@@ -47911,7 +47968,7 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.textSpeedDownButton.loadGraphic("assets/images/button.png",true,20,20);
 		x += horizontalSpacing;
 		this.textSpeedModeText = new flixel_text_FlxText(x,y,-1,"Normal",12);
-		x += horizontalSpacing;
+		x += horizontalSpacing + 12;
 		this.textSpeedUpButton = new flixel_ui_FlxButton(x,y,"->",$bind(this,this.clickSpeedUp));
 		this.textSpeedUpButton.loadGraphic("assets/images/button.png",true,20,20);
 		this.add(this.textSpeedLabelText);
@@ -67081,7 +67138,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 958860;
+	this.version = 616456;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -108452,6 +108509,7 @@ AssetPaths.music_goes_here__txt = "assets/music/music-goes-here.txt";
 AssetPaths.affection_heart__png = "assets/images/affection-heart.png";
 AssetPaths.images_go_here__txt = "assets/images/images-go-here.txt";
 AssetPaths.statbutton__png = "assets/images/statbutton.png";
+AssetPaths.martha_test__png = "assets/images/martha-test.png";
 AssetPaths.dialog_arrow__png = "assets/images/dialog-arrow.png";
 AssetPaths.button__png = "assets/images/button.png";
 AssetPaths.sounds_go_here__txt = "assets/sounds/sounds-go-here.txt";
@@ -109667,6 +109725,8 @@ flixel_util_FlxSpriteUtil.flashGfx = flixel_util_FlxSpriteUtil.flashGfxSprite.ge
 flixel_util_LabelValuePair._pool = new flixel_util_FlxPool_$flixel_$util_$LabelValuePair(flixel_util_LabelValuePair);
 game_SaveLoad.SAVE_SETTINGS = "SoulSettings";
 game_SaveLoad.SAVE_DATA_PREFIX = "SoulData";
+game_chars_Gal.STATE_TIME = 2.5;
+game_chars_Gal.SPEED = 75;
 game_ext_KColor.WINTER_SKY = -14651649;
 game_ext_KColor.RICH_BLACK = -15986934;
 game_ext_KColor.EMERALD = -14430613;
