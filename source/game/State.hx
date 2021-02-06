@@ -1,3 +1,5 @@
+package game;
+
 class State {
 	public var currentState:Float -> Void;
 

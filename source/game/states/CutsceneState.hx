@@ -26,6 +26,7 @@ class CutsceneState extends FlxState {
 		textIndex = -1;
 		skipThreshold = 0;
 		skipPerc = 0;
+		textComplete = false;
 		textList = textInfo;
 		nextState = newState;
 		textDelay = 0;

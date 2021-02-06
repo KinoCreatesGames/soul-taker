@@ -130,7 +130,7 @@ class OptionsSubState extends FlxSubState {
 		textSpeedDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
 		x += horizontalSpacing;
 		textSpeedModeText = new FlxText(x, y, -1, 'Normal', Globals.FONT_N);
-		x += horizontalSpacing;
+		x += horizontalSpacing + 12;
 		textSpeedUpButton = new FlxButton(x, y, '->', clickSpeedUp);
 		textSpeedUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
 
