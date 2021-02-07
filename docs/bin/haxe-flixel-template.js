@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "36";
+	app.meta.h["build"] = "37";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47218,6 +47218,7 @@ var game_chars_Gal = function(x,y,data) {
 	this._facingFlip.h[1] = { x : true, y : false};
 	this._facingFlip.h[16] = { x : false, y : false};
 	var fps = 6;
+	this.animation.add("idle",[1],fps,false);
 	this.animation.add("down",[0,1,2],fps,false);
 	this.animation.add("right",[6,7,8],fps,false);
 	this.animation.add("up",[18,19,20],fps,false);
@@ -47249,22 +47250,23 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 					this.animation.play("right");
 				}
 			} else {
+				this.animation.play("idle");
 				this.animation.stop();
 				this.velocity.set(0,0);
 			}
 			this.stateTimer += elapsed;
 		} else if(this.stateTimer > 10.5 || this.walkingPoint == null) {
 			this.stateTimer = 0;
+			var walkingRange = 150;
 			var signX = Math.random() < 0.5 ? -1 : 1;
 			var signY = Math.random() < 0.5 ? -1 : 1;
-			var xRange = Math.random() * 100 * signX;
-			var yRange = Math.random() * 100 * signY;
+			var xRange = Math.random() * walkingRange * signX;
+			var yRange = Math.random() * walkingRange * signY;
 			this.walkingPoint = this.getPosition().copyTo(new flixel_math_FlxPoint(0,0));
 			var _g = this.walkingPoint;
 			_g.set_x(_g.x + xRange);
 			var _g = this.walkingPoint;
 			_g.set_y(_g.y + yRange);
-			haxe_Log.trace(this.walkingPoint,{ fileName : "source/game/chars/Gal.hx", lineNumber : 84, className : "game.chars.Gal", methodName : "idle"});
 		}
 	}
 	,addToStat: function(stat) {
@@ -47817,7 +47819,6 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 		if(flixel_FlxG.mouse.overlaps(this.player)) {
 			if(this.statWindow.visible == false) {
 				this.statWindow.move(this.player.x,this.player.y - 274);
-				haxe_Log.trace(this.player.x,{ fileName : "source/game/states/HubState.hx", lineNumber : 122, className : "game.states.HubState", methodName : "updateMouseOverPlayer", customParams : [this.player.y,this.statWindow.members[0].x]});
 				this.statWindow.show();
 				this.statWindow.updateStats();
 			}
@@ -67147,7 +67148,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 911332;
+	this.version = 651272;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
