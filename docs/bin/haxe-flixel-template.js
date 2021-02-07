@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "40";
+	app.meta.h["build"] = "41";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47208,6 +47208,15 @@ game_chars_Char.prototype = $extend(flixel_FlxSprite.prototype,{
 	}
 	,__class__: game_chars_Char
 });
+var game_chars_Enemy = function(x,y,data) {
+	game_chars_Char.call(this,x,y,data);
+};
+$hxClasses["game.chars.Enemy"] = game_chars_Enemy;
+game_chars_Enemy.__name__ = "game.chars.Enemy";
+game_chars_Enemy.__super__ = game_chars_Char;
+game_chars_Enemy.prototype = $extend(game_chars_Char.prototype,{
+	__class__: game_chars_Enemy
+});
 var game_chars_Gal = function(x,y,data) {
 	game_chars_Char.call(this,x,y,data);
 	this.happiness = 75;
@@ -47556,6 +47565,24 @@ game_states_AgiGameSubState.prototype = $extend(game_states_MiniGameSubState.pro
 	}
 	,__class__: game_states_AgiGameSubState
 });
+var game_states_AtkGameSubState = function(x,y,width,height,gal) {
+	game_states_MiniGameSubState.call(this,x,y,width,height,gal);
+};
+$hxClasses["game.states.AtkGameSubState"] = game_states_AtkGameSubState;
+game_states_AtkGameSubState.__name__ = "game.states.AtkGameSubState";
+game_states_AtkGameSubState.__super__ = game_states_MiniGameSubState;
+game_states_AtkGameSubState.prototype = $extend(game_states_MiniGameSubState.prototype,{
+	processReward: function() {
+		var _gthis = this;
+		var rating = null;
+		var rewardState = new game_states_RewardSubState(this.miniGameCamera,this.player,game_Stat.Agi(this.player.atk),rating);
+		rewardState.closeCallback = function() {
+			_gthis.stateEnd();
+		};
+		this.openSubState(rewardState);
+	}
+	,__class__: game_states_AtkGameSubState
+});
 var game_states_CutsceneState = function(newState,textInfo) {
 	this.set_bgColor(-15790578);
 	this.textIndex = -1;
@@ -47659,6 +47686,69 @@ game_states_CutsceneState.prototype = $extend(flixel_FlxState.prototype,{
 		});
 	}
 	,__class__: game_states_CutsceneState
+});
+var game_states_DefGameSubState = function(x,y,width,height,gal) {
+	game_states_MiniGameSubState.call(this,x,y,width,height,gal);
+};
+$hxClasses["game.states.DefGameSubState"] = game_states_DefGameSubState;
+game_states_DefGameSubState.__name__ = "game.states.DefGameSubState";
+game_states_DefGameSubState.__super__ = game_states_MiniGameSubState;
+game_states_DefGameSubState.prototype = $extend(game_states_MiniGameSubState.prototype,{
+	processReward: function() {
+		var _gthis = this;
+		var rating = null;
+		var rewardState = new game_states_RewardSubState(this.miniGameCamera,this.player,game_Stat.Def(this.player.def),rating);
+		rewardState.closeCallback = function() {
+			_gthis.stateEnd();
+		};
+		this.openSubState(rewardState);
+	}
+	,__class__: game_states_DefGameSubState
+});
+var game_states_DexGameSubState = function(x,y,width,height,gal) {
+	game_states_MiniGameSubState.call(this,x,y,width,height,gal);
+};
+$hxClasses["game.states.DexGameSubState"] = game_states_DexGameSubState;
+game_states_DexGameSubState.__name__ = "game.states.DexGameSubState";
+game_states_DexGameSubState.__super__ = game_states_MiniGameSubState;
+game_states_DexGameSubState.prototype = $extend(game_states_MiniGameSubState.prototype,{
+	createElements: function() {
+		game_states_MiniGameSubState.prototype.createElements.call(this);
+		this.initialize();
+		this.createPlayer();
+		this.createEnemyShips();
+	}
+	,initialize: function() {
+		this.spawnCD = 0;
+		this.enemySpawnCD = 0;
+	}
+	,createPlayer: function() {
+		var x = this.miniGameCamera.width / 2;
+		var y = this.miniGameCamera.height / 2;
+		this.playerSprite = new flixel_FlxSprite(x,y);
+		this.playerSprite.makeGraphic(8,8,-264717);
+		this.add(this.playerSprite);
+	}
+	,createEnemyShips: function() {
+		this.enemyShips = new flixel_group_FlxTypedGroup(10);
+		this.add(this.enemyShips);
+	}
+	,update: function(elapsed) {
+		game_states_MiniGameSubState.prototype.update.call(this,elapsed);
+		this.updateSpawnEnemies(elapsed);
+	}
+	,updateSpawnEnemies: function(elapsed) {
+	}
+	,processReward: function() {
+		var _gthis = this;
+		var rating = null;
+		var rewardState = new game_states_RewardSubState(this.miniGameCamera,this.player,game_Stat.Dex(this.player.dex),rating);
+		rewardState.closeCallback = function() {
+			_gthis.stateEnd();
+		};
+		this.openSubState(rewardState);
+	}
+	,__class__: game_states_DexGameSubState
 });
 var game_states_FileSubState = function(BGColor) {
 	flixel_FlxSubState.call(this,BGColor);
@@ -47858,6 +47948,24 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 		this.openSubState(new game_states_OptionsSubState());
 	}
 	,__class__: game_states_HubState
+});
+var game_states_IntlGameSubState = function(x,y,width,height,gal) {
+	game_states_MiniGameSubState.call(this,x,y,width,height,gal);
+};
+$hxClasses["game.states.IntlGameSubState"] = game_states_IntlGameSubState;
+game_states_IntlGameSubState.__name__ = "game.states.IntlGameSubState";
+game_states_IntlGameSubState.__super__ = game_states_MiniGameSubState;
+game_states_IntlGameSubState.prototype = $extend(game_states_MiniGameSubState.prototype,{
+	processReward: function() {
+		var _gthis = this;
+		var rating = null;
+		var rewardState = new game_states_RewardSubState(this.miniGameCamera,this.player,game_Stat.Intl(this.player.intl),rating);
+		rewardState.closeCallback = function() {
+			_gthis.stateEnd();
+		};
+		this.openSubState(rewardState);
+	}
+	,__class__: game_states_IntlGameSubState
 });
 var game_states_LoadSubState = function(BGColor) {
 	game_states_FileSubState.call(this,BGColor);
@@ -48622,16 +48730,19 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.player.addHappiness(-20);
 		switch(this.channelIndex) {
 		case 0:
-			this.openSubState(new game_states_MiniGameSubState(x,y,width,height,this.player));
+			this.openSubState(new game_states_AtkGameSubState(x,y,width,height,this.player));
 			break;
 		case 1:
+			this.openSubState(new game_states_DefGameSubState(x,y,width,height,this.player));
 			break;
 		case 2:
 			this.openSubState(new game_states_AgiGameSubState(x,y,width,height,this.player));
 			break;
 		case 3:
+			this.openSubState(new game_states_DexGameSubState(x,y,width,height,this.player));
 			break;
 		case 4:
+			this.openSubState(new game_states_IntlGameSubState(x,y,width,height,this.player));
 			break;
 		case 5:
 			break;
@@ -67172,7 +67283,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 716237;
+	this.version = 541988;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109782,6 +109893,11 @@ game_states_AgiGameSubState.INVINCIBLE_CD = 2.0;
 game_states_CutsceneState.TEXT_WIDTH = 400;
 game_states_CutsceneState.INIT_TEXT_DELAY = 3;
 game_states_CutsceneState.SKIP_THRESHOLD = 2.5;
+game_states_DexGameSubState.PLAYER_SPEED = 800;
+game_states_DexGameSubState.BULLET_SPEED = 1200;
+game_states_DexGameSubState.BULLET_CD = 0.125;
+game_states_DexGameSubState.INVINCIBLE_CD = 2;
+game_states_DexGameSubState.ENEMY_SPAWN_CD = 2.5;
 game_states_RewardSubState.STAR_DELAY = 0.50;
 game_states_RewardSubState.REWARD_GOOD = 2;
 game_states_RewardSubState.REWARD_GREAT = 4;
