@@ -11,6 +11,8 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 	public var atkText:FlxText;
 	public var defText:FlxText;
 	public var agiText:FlxText;
+	public var dexText:FlxText;
+	public var intlText:FlxText;
 
 	public static inline var BORDERSIZE:Int = 2;
 	public static inline var BGCOLOR:Int = KColor.RICH_BLACK_FORGRA;
@@ -58,6 +60,8 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 		atkText = createFlxText('Atk');
 		defText = createFlxText('Def');
 		agiText = createFlxText('Agi');
+		dexText = createFlxText('Dex');
+		intlText = createFlxText('Int');
 
 		add(nameText);
 		add(hpText);
@@ -72,6 +76,8 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 		atkText.text = 'Atk${SPACING}${player.atk}';
 		defText.text = 'Def${SPACING}${player.def}';
 		agiText.text = 'Agi${SPACING}${player.agi}';
+		dexText.text = 'Dex${SPACING}${player.dex}';
+		intlText.text = 'Int${SPACING}${player.intl}';
 	}
 
 	public function hide() {

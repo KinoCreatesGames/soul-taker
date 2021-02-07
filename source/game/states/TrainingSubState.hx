@@ -13,10 +13,13 @@ class TrainingSubState extends FlxSubState {
 	public var playButton:FlxButton; // Plays the current mini game.
 	public var titleText:FlxText; // Title Text For the TV
 	public var channelIndex:Int;
+	public var happinessBar:FlxBar;
+	public var happinessIcon:FlxSprite;
 
 	public static inline var WIDTH:Int = 640;
 	public static inline var HEIGHT:Int = 356;
 	public static inline var CHANNEL_MAX:Int = 6;
+	public static inline var HAPPINESS_COST:Int = 20;
 
 	public function new(gal:Gal) {
 		player = gal;
@@ -28,6 +31,7 @@ class TrainingSubState extends FlxSubState {
 		createBackground();
 		createTrainingText();
 		createTrainingButtons();
+		createHappiness();
 		super.create();
 	}
 
@@ -75,6 +79,25 @@ class TrainingSubState extends FlxSubState {
 		add(rightButton);
 	}
 
+	public function createHappiness() {
+		var offsetX = 150;
+		var position = new FlxPoint(background.x - offsetX, background.y);
+		var padding = 48;
+		var x = position.x + padding;
+		var y = position.y + padding;
+		var barWidth = 150;
+		happinessBar = new FlxBar(x, y, LEFT_TO_RIGHT, barWidth, 25, player,
+			'happiness', 0, 100, true);
+		happinessBar.createFilledBar(KColor.RICH_BLACK_FORGRA,
+			KColor.BURGUNDY, true, KColor.SNOW);
+
+		happinessIcon = new FlxSprite(x + barWidth - 16, y);
+		happinessIcon.makeGraphic(32, 32, KColor.PINK);
+
+		add(happinessBar);
+		add(happinessIcon);
+	}
+
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
 	}
@@ -95,6 +118,7 @@ class TrainingSubState extends FlxSubState {
 		var width = (WIDTH - padding * 2) - (innerTvStart * 2);
 		var height = (HEIGHT - padding * 2) - (innerTvStart * 2);
 		// Remove Happiness From Bar
+		player.happiness -= HAPPINESS_COST;
 
 		switch (channelIndex) {
 			case 0: // Atk
