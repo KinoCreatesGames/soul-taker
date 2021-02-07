@@ -118,7 +118,7 @@ class TrainingSubState extends FlxSubState {
 		var width = (WIDTH - padding * 2) - (innerTvStart * 2);
 		var height = (HEIGHT - padding * 2) - (innerTvStart * 2);
 		// Remove Happiness From Bar
-		player.happiness -= HAPPINESS_COST;
+		player.addHappiness(-HAPPINESS_COST);
 
 		switch (channelIndex) {
 			case 0: // Atk
