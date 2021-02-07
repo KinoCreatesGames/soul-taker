@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "42";
+	app.meta.h["build"] = "43";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47735,9 +47735,64 @@ game_states_DexGameSubState.prototype = $extend(game_states_MiniGameSubState.pro
 	}
 	,update: function(elapsed) {
 		game_states_MiniGameSubState.prototype.update.call(this,elapsed);
+		this.updateControls(elapsed);
 		this.updateSpawnEnemies(elapsed);
+		this.updateCollisions();
+	}
+	,updateControls: function(elapsed) {
+		var tmp = flixel_FlxG.keys.checkKeyArrayState([90],2);
+		this.updatePlayerMovement(elapsed);
+	}
+	,updatePlayerMovement: function(elapsed) {
+		var left = false;
+		var right = false;
+		this.playerSprite.maxVelocity.set(120,200);
+		left = flixel_FlxG.keys.checkKeyArrayState([37,65],1);
+		right = flixel_FlxG.keys.checkKeyArrayState([39,68],1);
+		if(left && right) {
+			right = false;
+			left = right;
+		}
+		this.playerSprite.acceleration.set_x(0);
+		if(left || right) {
+			var newAngle = 0;
+			if(left) {
+				this.playerSprite.set_flipX(true);
+				var _g = this.playerSprite.acceleration;
+				_g.set_x(_g.x - 800);
+			}
+			if(right) {
+				this.playerSprite.set_flipX(false);
+				var _g = this.playerSprite.acceleration;
+				_g.set_x(_g.x + 800);
+			}
+			flixel_util_FlxSpriteUtil.bound(this.playerSprite,0,this.miniGameCamera.width,0,this.miniGameCamera.height);
+		}
 	}
 	,updateSpawnEnemies: function(elapsed) {
+	}
+	,updateCollisions: function() {
+		this.playerCollisions();
+		this.enemyCollisions();
+	}
+	,playerCollisions: function() {
+		flixel_FlxG.overlap(this.playerSprite,this.enemyBullets,$bind(this,this.playerTouchEnemyBullet));
+		flixel_FlxG.overlap(this.playerSprite,this.enemyShips,$bind(this,this.playerTouchEnemy));
+	}
+	,playerTouchEnemyBullet: function(player,enemyBullet) {
+		enemyBullet.kill();
+		player.kill();
+	}
+	,playerTouchEnemy: function(player,enemy) {
+		enemy.kill();
+		player.kill();
+	}
+	,enemyCollisions: function() {
+		flixel_FlxG.overlap(this.enemyShips,this.playerBullets,$bind(this,this.enemyTouchPlayerBullet));
+	}
+	,enemyTouchPlayerBullet: function(enemy,playerBullet) {
+		enemy.kill();
+		playerBullet.kill();
 	}
 	,processReward: function() {
 		var _gthis = this;
@@ -67283,7 +67338,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 490770;
+	this.version = 135774;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
