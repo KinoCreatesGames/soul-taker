@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "37";
+	app.meta.h["build"] = "38";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -48551,6 +48551,7 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.createBackground();
 		this.createTrainingText();
 		this.createTrainingButtons();
+		this.createHappiness();
 		flixel_FlxSubState.prototype.create.call(this);
 	}
 	,createBackground: function() {
@@ -48585,6 +48586,20 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.rightButton = new flixel_ui_FlxButton(this.background.x + 640 - padding * 4,y,"-->",$bind(this,this.clickRight));
 		this.add(this.rightButton);
 	}
+	,createHappiness: function() {
+		var offsetX = 150;
+		var position = new flixel_math_FlxPoint(this.background.x - offsetX,this.background.y);
+		var padding = 48;
+		var x = position.x + padding;
+		var y = position.y + padding;
+		var barWidth = 150;
+		this.happinessBar = new flixel_ui_FlxBar(x,y,flixel_ui_FlxBarFillDirection.LEFT_TO_RIGHT,barWidth,25,this.player,"happiness",0,100,true);
+		this.happinessBar.createFilledBar(-15790578,-8714200,true,-264717);
+		this.happinessIcon = new flixel_FlxSprite(x + barWidth - 16,y);
+		this.happinessIcon.makeGraphic(32,32,-16181);
+		this.add(this.happinessBar);
+		this.add(this.happinessIcon);
+	}
 	,update: function(elapsed) {
 		flixel_FlxSubState.prototype.update.call(this,elapsed);
 	}
@@ -48602,6 +48617,7 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		var y = this.background.y + padding + innerTvStart;
 		var width = 640 - padding * 2 - innerTvStart * 2;
 		var height = 356 - padding * 2 - innerTvStart * 2;
+		this.player.happiness -= 20;
 		switch(this.channelIndex) {
 		case 0:
 			this.openSubState(new game_states_MiniGameSubState(x,y,width,height,this.player));
@@ -48925,6 +48941,8 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 		this.atkText = createFlxText("Atk");
 		this.defText = createFlxText("Def");
 		this.agiText = createFlxText("Agi");
+		this.dexText = createFlxText("Dex");
+		this.intlText = createFlxText("Int");
 		this.add(this.nameText);
 		this.add(this.hpText);
 		this.add(this.atkText);
@@ -48937,6 +48955,8 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 		this.atkText.set_text("Atk" + "                   " + this.player.atk);
 		this.defText.set_text("Def" + "                   " + this.player.def);
 		this.agiText.set_text("Agi" + "                   " + this.player.agi);
+		this.dexText.set_text("Dex" + "                   " + this.player.dex);
+		this.intlText.set_text("Int" + "                   " + this.player.intl);
 	}
 	,hide: function() {
 		this.set_visible(false);
@@ -67148,7 +67168,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 651272;
+	this.version = 175937;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109765,6 +109785,7 @@ game_states_RewardSubState.REWARD_AFFECTION = 1;
 game_states_TrainingSubState.WIDTH = 640;
 game_states_TrainingSubState.HEIGHT = 356;
 game_states_TrainingSubState.CHANNEL_MAX = 6;
+game_states_TrainingSubState.HAPPINESS_COST = 20;
 game_ui_File.WIDTH = 400;
 game_ui_File.HEIGHT = 75;
 game_ui_File.BGCOLOR = -15790578;
