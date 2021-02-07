@@ -1,14 +1,9 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/1377253/93661464-edf77780-fa4f-11ea-9622-86cf7e34d460.png" height="80" /></p>
 
-<h1 align="center">HaxeFlixel Game Template</h1>
-
-<h3 align="center">Everything you need to start making your HF game in 2-3 terminal commands</h3>
-
-<p align="center">No need to install <a href="https://haxe.org/">Haxe</a>, <a href="https://www.openfl.org/">OpenFL</a>, <a href="https://lime.software/">Lime</a> or <a href="https://haxeflixel.com/">HaxeFlixel</a> separately. <br />This template takes care of all of that with the power of <a href="https://github.com/lix-pm/lix.client">Lix</a> and <a href="https://nodejs.org/en/">Nodejs</a>.</p>
-
+<h1 align="center">Project Soul Taker</h1>
 ---
 
-*This template requires [Nodejs](https://nodejs.org/en/) (v6 or higher) to be installed to run most of the commands below.*
+*This game requires [Nodejs](https://nodejs.org/en/) (v6 or higher) to be installed to run most of the commands below.*
 
 ### 1. Download
 
