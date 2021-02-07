@@ -68,6 +68,8 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 		add(atkText);
 		add(defText);
 		add(agiText);
+		add(dexText);
+		add(intlText);
 	}
 
 	public function updateStats() {
@@ -76,8 +78,8 @@ class StatWindow extends FlxTypedGroup<FlxSprite> {
 		atkText.text = 'Atk${SPACING}${player.atk}';
 		defText.text = 'Def${SPACING}${player.def}';
 		agiText.text = 'Agi${SPACING}${player.agi}';
-		dexText.text = 'Dex${SPACING}${player.dex}';
-		intlText.text = 'Int${SPACING}${player.intl}';
+		dexText.text = 'Dex${SPACING.substr(1)}${player.dex}';
+		intlText.text = 'Int${SPACING} ${player.intl}';
 	}
 
 	public function hide() {
