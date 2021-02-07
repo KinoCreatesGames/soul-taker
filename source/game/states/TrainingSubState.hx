@@ -80,7 +80,7 @@ class TrainingSubState extends FlxSubState {
 	}
 
 	public function createHappiness() {
-		var offsetX = 150;
+		var offsetX = 225;
 		var position = new FlxPoint(background.x - offsetX, background.y);
 		var padding = 48;
 		var x = position.x + padding;
