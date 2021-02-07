@@ -9,7 +9,7 @@
 
 You can also create a new project based on this template using [degit](https://github.com/Rich-Harris/degit) which will ignore all .git related files.
 ```sh
-npx degit RichardBray/game-jam-template my-flixel-game
+npx degit KinoCreatesGames/soul-taker my-flixel-game
 cd my-flixel-game
 ```
 
