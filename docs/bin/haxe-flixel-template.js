@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "38";
+	app.meta.h["build"] = "39";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -48587,7 +48587,7 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.add(this.rightButton);
 	}
 	,createHappiness: function() {
-		var offsetX = 150;
+		var offsetX = 225;
 		var position = new flixel_math_FlxPoint(this.background.x - offsetX,this.background.y);
 		var padding = 48;
 		var x = position.x + padding;
@@ -48948,6 +48948,8 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 		this.add(this.atkText);
 		this.add(this.defText);
 		this.add(this.agiText);
+		this.add(this.dexText);
+		this.add(this.intlText);
 	}
 	,updateStats: function() {
 		this.nameText.set_text(this.player.name);
@@ -48955,8 +48957,8 @@ game_ui_StatWindow.prototype = $extend(flixel_group_FlxTypedGroup.prototype,{
 		this.atkText.set_text("Atk" + "                   " + this.player.atk);
 		this.defText.set_text("Def" + "                   " + this.player.def);
 		this.agiText.set_text("Agi" + "                   " + this.player.agi);
-		this.dexText.set_text("Dex" + "                   " + this.player.dex);
-		this.intlText.set_text("Int" + "                   " + this.player.intl);
+		this.dexText.set_text("Dex" + HxOverrides.substr("                   ",1,null) + this.player.dex);
+		this.intlText.set_text("Int" + "                   " + " " + this.player.intl);
 	}
 	,hide: function() {
 		this.set_visible(false);
@@ -67168,7 +67170,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 175937;
+	this.version = 409297;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
