@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "39";
+	app.meta.h["build"] = "40";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47322,12 +47322,14 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 	}
 	,addHappiness: function(value) {
 		this.happiness += value;
+		this.happiness = Math.min(Math.max(this.happiness,0),100);
 	}
 	,setAffection: function(value) {
 		this.affection = value;
 	}
 	,addAffection: function(value) {
 		this.affection += value;
+		this.affection = Math.min(Math.max(this.affection,0),250);
 	}
 	,__class__: game_chars_Gal
 });
@@ -48617,7 +48619,7 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		var y = this.background.y + padding + innerTvStart;
 		var width = 640 - padding * 2 - innerTvStart * 2;
 		var height = 356 - padding * 2 - innerTvStart * 2;
-		this.player.happiness -= 20;
+		this.player.addHappiness(-20);
 		switch(this.channelIndex) {
 		case 0:
 			this.openSubState(new game_states_MiniGameSubState(x,y,width,height,this.player));
@@ -67170,7 +67172,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 409297;
+	this.version = 716237;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109759,6 +109761,7 @@ game_SaveLoad.SAVE_SETTINGS = "SoulSettings";
 game_SaveLoad.SAVE_DATA_PREFIX = "SoulData";
 game_chars_Gal.STATE_TIME = 10.5;
 game_chars_Gal.SPEED = 75;
+game_chars_Gal.MAX_AFFECTION = 250;
 game_ext_KColor.WINTER_SKY = -14651649;
 game_ext_KColor.RICH_BLACK = -15986934;
 game_ext_KColor.EMERALD = -14430613;
