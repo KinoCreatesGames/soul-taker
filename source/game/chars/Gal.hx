@@ -23,6 +23,7 @@ class Gal extends Char {
 
 	public static inline var STATE_TIME:Float = 10.5;
 	public static inline var SPEED:Int = 75;
+	public static inline var MAX_AFFECTION:Int = 250;
 
 	public function new(x:Float, y:Float, data:Actor) {
 		super(x, y, data);
@@ -125,6 +126,7 @@ class Gal extends Char {
 
 	public function addHappiness(value:Float) {
 		happiness += value;
+		happiness = happiness.clampf(0, 100);
 	}
 
 	public function setAffection(value:Float) {
@@ -133,5 +135,6 @@ class Gal extends Char {
 
 	public function addAffection(value:Float) {
 		affection += value;
+		affection = affection.clampf(0, MAX_AFFECTION);
 	}
 }
