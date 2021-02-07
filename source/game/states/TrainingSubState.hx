@@ -122,14 +122,20 @@ class TrainingSubState extends FlxSubState {
 
 		switch (channelIndex) {
 			case 0: // Atk
-				openSubState(new MiniGameSubState(cast x, cast y, width,
+				openSubState(new AtkGameSubState(cast x, cast y, width,
 					height, player));
 			case 1: // Def
+				openSubState(new DefGameSubState(cast x, cast y, width,
+					height, player));
 			case 2: // Agi - Dodge Things
 				openSubState(new AgiGameSubState(cast x, cast y, width,
 					height, player));
 			case 3: // Dex - SHMUP
+				openSubState(new DexGameSubState(cast x, cast y, width,
+					height, player));
 			case 4: // Int - Matching Game
+				openSubState(new IntlGameSubState(cast x, cast y, width,
+					height, player));
 			case 5: //
 			case _: //
 		}
