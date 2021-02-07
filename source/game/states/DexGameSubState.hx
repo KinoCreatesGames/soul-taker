@@ -45,10 +45,85 @@ class DexGameSubState extends MiniGameSubState {
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
+		updateControls(elapsed);
 		updateSpawnEnemies(elapsed);
+		updateCollisions();
+	}
+
+	public function updateControls(elapsed:Float) {
+		if (FlxG.keys.anyJustPressed([Z])) {
+			// Fire Bullet
+		}
+		updatePlayerMovement(elapsed);
+	}
+
+	public function updatePlayerMovement(elapsed:Float) {
+		var left = false;
+		var right = false;
+
+		playerSprite.maxVelocity.set(120, 200);
+
+		left = FlxG.keys.anyPressed([LEFT, A]);
+		right = FlxG.keys.anyPressed([RIGHT, D]);
+
+		if (left && right) left = right = false;
+
+		// Because we're using acceleration above to handle gravity insteada of velocity
+		// We need to then use acceleration in the x  axis to account for change in speed
+		// overtime for jumps and for y we use velocity because a jump is a burst of speed
+		// trace(y, acceleration.y, velocity.y);
+		playerSprite.acceleration.x = 0;
+		// Handle Actual Movement
+		if (left || right) {
+			var newAngle:Float = 0;
+
+			if (left) {
+				playerSprite.flipX = true;
+				playerSprite.acceleration.x -= PLAYER_SPEED;
+			}
+			if (right) {
+				playerSprite.flipX = false;
+				playerSprite.acceleration.x += PLAYER_SPEED;
+			}
+
+			// Tween The Sprite
+
+			playerSprite.bound(0, miniGameCamera.width, 0,
+				miniGameCamera.height);
+		}
 	}
 
 	public function updateSpawnEnemies(elapsed:Float) {}
+
+	public function updateCollisions() {
+		playerCollisions();
+		enemyCollisions();
+	}
+
+	public function playerCollisions() {
+		FlxG.overlap(playerSprite, enemyBullets, playerTouchEnemyBullet);
+		FlxG.overlap(playerSprite, enemyShips, playerTouchEnemy);
+	}
+
+	public function playerTouchEnemyBullet(player:FlxSprite,
+			enemyBullet:Bullet) {
+		enemyBullet.kill();
+		player.kill();
+	}
+
+	public function playerTouchEnemy(player:FlxSprite, enemy:Enemy) {
+		enemy.kill();
+		player.kill();
+	}
+
+	public function enemyCollisions() {
+		FlxG.overlap(enemyShips, playerBullets, enemyTouchPlayerBullet);
+	}
+
+	public function enemyTouchPlayerBullet(enemy:Enemy, playerBullet:Bullet) {
+		enemy.kill();
+		playerBullet.kill();
+	}
 
 	override public function processReward() {
 		var rating = null;
