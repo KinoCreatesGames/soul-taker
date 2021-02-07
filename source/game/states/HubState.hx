@@ -119,7 +119,7 @@ class HubState extends FlxState {
 			if (statWindow.visible == false) {
 				statWindow.move(player.x,
 					player.y - (StatWindow.HEIGHT + StatWindow.MARGIN));
-				trace(player.x, player.y, statWindow.members[0].x);
+
 				statWindow.show();
 				statWindow.updateStats();
 			}

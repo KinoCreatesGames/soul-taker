@@ -35,6 +35,7 @@ class Gal extends Char {
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
 		var fps = 6;
+		animation.add('idle', [1], fps, false);
 		animation.add('down', [0, 1, 2], fps, false);
 		animation.add('right', [6, 7, 8], fps, false);
 		animation.add('up', [18, 19, 20], fps, false);
@@ -66,6 +67,7 @@ class Gal extends Char {
 				}
 			} else {
 				// Stop all animations and path finding
+				animation.play('idle');
 				animation.stop();
 				velocity.set(0, 0);
 			}
@@ -73,15 +75,16 @@ class Gal extends Char {
 			stateTimer += elapsed;
 		} else if (stateTimer > STATE_TIME || walkingPoint == null) {
 			// Reset Timer & Shift Walking Point
+			// TODO: Track this with points that we set on the map instead
 			stateTimer = 0;
+			var walkingRange = 150;
 			var signX = Math.random() < 0.5 ? -1 : 1;
 			var signY = Math.random() < 0.5 ? -1 : 1;
-			var xRange = Math.random() * 100 * signX;
-			var yRange = Math.random() * 100 * signY;
+			var xRange = Math.random() * walkingRange * signX;
+			var yRange = Math.random() * walkingRange * signY;
 			walkingPoint = this.getPosition().copyTo(new FlxPoint(0, 0));
 			walkingPoint.x += xRange;
 			walkingPoint.y += yRange;
-			trace(walkingPoint);
 		}
 		// Add Bounds Check to prevent leaving screen
 	}
