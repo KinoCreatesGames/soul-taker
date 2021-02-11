@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "51";
+	app.meta.h["build"] = "52";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -4347,7 +4347,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fmusic%2Fmusic-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3R8R5R13R6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R14R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i18570R3R4R5R15R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i33629R3y5:SOUNDR5R20R19aR18R20hgoR2i5794R3R23R5R22R19aR21R22hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fmusic%2Fmusic-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3R8R5R13R6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R14R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i18929R3R4R5R15R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i33629R3y5:SOUNDR5R20R19aR18R20hgoR2i5794R3R23R5R22R19aR21R22hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -47217,6 +47217,23 @@ game_chars_Enemy.__super__ = game_chars_Char;
 game_chars_Enemy.prototype = $extend(game_chars_Char.prototype,{
 	__class__: game_chars_Enemy
 });
+var game_chars_EnemyShip = function(x,y,data,bulletGrp) {
+	game_chars_Enemy.call(this,x,y,data);
+	this.bulletGrp = bulletGrp;
+	this.initialize();
+};
+$hxClasses["game.chars.EnemyShip"] = game_chars_EnemyShip;
+game_chars_EnemyShip.__name__ = "game.chars.EnemyShip";
+game_chars_EnemyShip.__super__ = game_chars_Enemy;
+game_chars_EnemyShip.prototype = $extend(game_chars_Enemy.prototype,{
+	initialize: function() {
+	}
+	,idle: function(elapsed) {
+	}
+	,attack: function(elapsed) {
+	}
+	,__class__: game_chars_EnemyShip
+});
 var game_chars_Gal = function(x,y,data) {
 	game_chars_Char.call(this,x,y,data);
 	this.happiness = 75;
@@ -47341,6 +47358,67 @@ game_chars_Gal.prototype = $extend(game_chars_Char.prototype,{
 		this.affection = Math.min(Math.max(this.affection,0),250);
 	}
 	,__class__: game_chars_Gal
+});
+var game_chars_LineShip = function(x,y,data,bulletGrp) {
+	game_chars_EnemyShip.call(this,x,y,data,bulletGrp);
+};
+$hxClasses["game.chars.LineShip"] = game_chars_LineShip;
+game_chars_LineShip.__name__ = "game.chars.LineShip";
+game_chars_LineShip.__super__ = game_chars_EnemyShip;
+game_chars_LineShip.prototype = $extend(game_chars_EnemyShip.prototype,{
+	update: function(elapsed) {
+		game_chars_EnemyShip.prototype.update.call(this,elapsed);
+		this.processPattern(elapsed);
+	}
+	,initialize: function() {
+		this.makeGraphic(8,8,-65536);
+		this.ai = new game_State($bind(this,this.idle));
+		this.bulletCD = 1;
+		this.stateTime = 1.5;
+		this.waitTime = 3;
+		this.maxVelocity.set(0,250);
+	}
+	,processPattern: function(elapsed) {
+		this.ai.update(elapsed);
+	}
+	,idle: function(elapsed) {
+		if(this.stateTime <= 0) {
+			this.ai.currentState = $bind(this,this.attack);
+		} else {
+			this.stateTime -= elapsed;
+			this.acceleration.set_y(50);
+		}
+	}
+	,attack: function(elapsed) {
+		if(this.waitTime > 0) {
+			this.waitTime -= elapsed;
+			this.velocity.set(0,0);
+		} else {
+			this.acceleration.set_y(50);
+		}
+		if(this.bulletCD <= 0) {
+			this.fireBullet();
+		} else {
+			this.bulletCD -= elapsed;
+		}
+	}
+	,fireBullet: function() {
+		if(this.bulletCD <= 0) {
+			haxe_Log.trace("Fire Bullet",{ fileName : "source/game/chars/LineShip.hx", lineNumber : 59, className : "game.chars.LineShip", methodName : "fireBullet"});
+			var bullet = this.bulletGrp.recycle(game_chars_Bullet);
+			bullet.makeGraphic(8,8,-264717);
+			bullet.acceleration.set_y(0);
+			bullet.velocity.set(0,0);
+			bullet.maxVelocity.set(0,400);
+			var spawnY = 18;
+			var spawnPoint = this.getPosition();
+			bullet.setPosition(spawnPoint.x,spawnPoint.y + spawnY);
+			this.bulletGrp.add(bullet);
+			bullet.acceleration.set_y(800);
+			this.bulletCD = 1;
+		}
+	}
+	,__class__: game_chars_LineShip
 });
 var game_ext_KColor = {};
 var game_ext_MathExt = function() { };
@@ -47733,7 +47811,7 @@ game_states_DexGameSubState.prototype = $extend(game_states_MiniGameSubState.pro
 		this.add(this.playerSprite);
 	}
 	,createEnemyShips: function() {
-		this.enemyShips = new flixel_group_FlxTypedGroup(15);
+		this.enemyShips = new flixel_group_FlxTypedGroup(20);
 		this.enemyBullets = new flixel_group_FlxTypedGroup(100);
 		this.add(this.enemyBullets);
 		this.add(this.enemyShips);
@@ -47755,7 +47833,7 @@ game_states_DexGameSubState.prototype = $extend(game_states_MiniGameSubState.pro
 	}
 	,fireBullet: function() {
 		if(this.bulletCD <= 0) {
-			haxe_Log.trace("Fire Bullet",{ fileName : "source/game/states/DexGameSubState.hx", lineNumber : 73, className : "game.states.DexGameSubState", methodName : "fireBullet"});
+			haxe_Log.trace("Fire Bullet",{ fileName : "source/game/states/DexGameSubState.hx", lineNumber : 75, className : "game.states.DexGameSubState", methodName : "fireBullet"});
 			var bullet = this.playerBullets.recycle(game_chars_Bullet);
 			bullet.makeGraphic(8,8,-264717);
 			bullet.acceleration.set_y(0);
@@ -47795,6 +47873,17 @@ game_states_DexGameSubState.prototype = $extend(game_states_MiniGameSubState.pro
 		flixel_util_FlxSpriteUtil.bound(this.playerSprite,0,this.miniGameCamera.width,0,this.miniGameCamera.height);
 	}
 	,updateSpawnEnemies: function(elapsed) {
+		var spawnPoint = new flixel_math_FlxPoint(Math.random() * (this.miniGameCamera.width - 20),-20);
+		if(this.enemySpawnCD <= 0) {
+			var shipData = ext_ArrayExt.getByFn(DepotData.Actors.lines,function(el) {
+				return el.name == "LineShip";
+			});
+			var ship = new game_chars_LineShip(spawnPoint.x,spawnPoint.y,shipData,this.enemyBullets);
+			this.enemyShips.add(ship);
+			this.enemySpawnCD = 2.5;
+		} else {
+			this.enemySpawnCD -= elapsed;
+		}
 	}
 	,updateCollisions: function() {
 		this.playerCollisions();
@@ -67416,7 +67505,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 716322;
+	this.version = 191287;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -108798,7 +108887,7 @@ DateTools.DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Frida
 DateTools.MONTH_SHORT_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 DateTools.MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 DepotData.Barks = { name : "barks", lines : [{ name : "Koyuki", affectionMin : 0, guid : "2db4629a-f021-4fcc-95b8-5aa5fc76597f", message : "Hello", id : "0", affectionMax : 25},{ name : "Koyuki", affectionMin : 0, guid : "fe7505ed-7772-4034-9a06-d94a6b1719b9", message : "Are you that interested in what I'm saying?", id : "1", affectionMax : 25},{ name : "Koyuki", affectionMin : 0, guid : "3defe2e2-e60b-4db8-a6d2-24cceddf4548", message : "Maybe when you get to know me better, I'll be able to tell you more about me.", id : "2", affectionMax : 25},{ name : "Koyuki", affectionMin : 25, guid : "9764fbc7-feac-4ddd-ac94-4029d2e28529", message : "As my mentor said, \"A hero never givues up.\" Who is my mentor? T-that's a secret.", id : "3", affectionMax : 50},{ name : "Koyuki", affectionMin : 25, guid : "3f2f24cd-72c0-4175-95e7-2a3b7d0ac1e2", message : "You gotta have dreams and honor.", id : "4", affectionMax : 50},{ name : "Koyuki", affectionMin : 25, guid : "5e4d6823-4ad3-4685-bed8-1d0f4c794247", message : "Did you know...I'm saving up for a giant robot!?", id : "5", affectionMax : 50},{ name : "Koyuki", affectionMin : 25, guid : "b6748d66-d35d-4db8-976c-f1efc89305d2", message : "Obviously the best special moves have to have beams!!", id : "6", affectionMax : 50},{ name : "Koyuki", affectionMin : 25, guid : "e488395e-2e9e-4d69-a655-17f221a40499", message : "In your city, are the heros just walking around? They seem so common from the shows I watched.", id : "7", affectionMax : 50},{ name : "Koyuki", affectionMin : 75, guid : "679455d8-b53e-447f-83ed-aa36f701fcda", message : "Thanks for teaching me so much...mentor. One day I hope we can visit your world together.", id : "8", affectionMax : 100},{ name : "Koyuki", affectionMin : 75, guid : "3562b8db-277e-4170-980a-d3757f23f6b6", message : "People always thought I was an oddball, but I didn't let it stop me from being me!", id : "9", affectionMax : 100},{ name : "Koyuki", affectionMin : 75, guid : "6a538230-1518-414c-9d4b-b62d6407a97d", message : "You want to see me without my glasses? W-why?", id : "10", affectionMax : 100},{ name : "Koyuki", affectionMin : 75, guid : "1f634d11-7c49-43a2-8b4f-f9313cc1f995", message : "I'm glad you're here; it was lonely before.", id : "11", affectionMax : 100},{ name : "Koyuki", affectionMin : 50, guid : "fea4cfc1-30a3-4e6e-a9a7-a07987ef19dd", message : "I think I like you just a bit more now...", id : "12", affectionMax : 75},{ name : "Koyuki", affectionMin : 25, guid : "5c693201-8007-4c01-9fe4-ed720596f044", message : "Minus ULTRA!!!! Wait...what? That's not how it goes?!", id : "13", affectionMax : 50}], isProps : false, hidden : false, guid : "79ee0d51-d381-4c00-a857-a09b76322ce8", displayColumn : "id", description : "Random messages that will be triggered when you click on the gal.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
-DepotData.Actors = { name : "actors", lines : [{ name : "Koyuki", agi : 5, intl : 5, guid : "2a713adc-7402-4407-bfdc-042aa0a65f24", id : "0", dex : 5, atk : 5, health : 20, def : 5}], isProps : false, hidden : false, guid : "da8505fc-f2e8-4663-bf3b-e752c233e6ed", displayColumn : "id", description : "Information on actor stats and their base stats.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
+DepotData.Actors = { name : "actors", lines : [{ name : "Koyuki", agi : 5, intl : 5, guid : "2a713adc-7402-4407-bfdc-042aa0a65f24", id : "0", dex : 5, atk : 5, health : 20, def : 5},{ name : "LineShip", agi : 5, intl : 5, guid : "024baa5f-b158-40cc-a8fd-01938fc17f06", id : "1", dex : 5, atk : 1, health : 3, def : 0}], isProps : false, hidden : false, guid : "da8505fc-f2e8-4663-bf3b-e752c233e6ed", displayColumn : "id", description : "Information on actor stats and their base stats.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
 DepotData.Cutscene = { name : "cutscene", lines : [{ name : "Intro", guid : "afec7e6f-d93e-424a-8b4b-9965d45a21d0", cutsceneText : [{ text : "It all started many years ago.", guid : "bed6a640-903a-469f-a12a-7496f8c63302", id : "0", delay : 4},{ text : "A war occured with the human world and the demon world. ", guid : "70fb87ac-422b-460f-9f0e-4beabe8016f8", id : "1", delay : 4},{ text : "At that point the demon were sealed away for good.", guid : "a92649b3-668a-4fca-9570-165144e8a5de", id : "2", delay : 4}], id : "0"}], isProps : false, hidden : false, guid : "6124e31b-61f4-4ee6-996c-a24429f73c00", displayColumn : "id", description : "Sheet for doing cutscene skits in game.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
 DepotData.CutsceneText = { parentSheetGUID : "6124e31b-61f4-4ee6-996c-a24429f73c00", name : "cutsceneText", isProps : false, hidden : true, guid : "b22564a7-ff9a-4722-aa9c-762a94b41b0b", displayColumn : "id", description : "list@6124e31b-61f4-4ee6-996c-a24429f73c00", columnGUID : "12ad0212-d5ea-416e-9264-47793808b47b"};
 Globals.GAME_TITLE = "Soul Taker";
@@ -110006,6 +110095,11 @@ game_SaveLoad.SAVE_DATA_PREFIX = "SoulData";
 game_chars_Gal.STATE_TIME = 10.5;
 game_chars_Gal.SPEED = 75;
 game_chars_Gal.MAX_AFFECTION = 250;
+game_chars_LineShip.IDLE_TIME = 1.5;
+game_chars_LineShip.WAIT_TIME = 3;
+game_chars_LineShip.BULLET_CD = 1;
+game_chars_LineShip.BULLET_SPEED = 800;
+game_chars_LineShip.SHIP_SPEED = 50;
 game_ext_KColor.WINTER_SKY = -14651649;
 game_ext_KColor.RICH_BLACK = -15986934;
 game_ext_KColor.EMERALD = -14430613;
