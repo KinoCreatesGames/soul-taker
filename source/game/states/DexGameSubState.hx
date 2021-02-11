@@ -72,8 +72,10 @@ class DexGameSubState extends MiniGameSubState {
 		if (bulletCD <= 0) {
 			trace('Fire Bullet');
 			var bullet = playerBullets.recycle(Bullet);
+			bullet.makeGraphic(8, 8, KColor.SNOW);
 			bullet.acceleration.y = 0;
-			var spawnY = 18;
+			bullet.velocity.set(0, 0);
+			var spawnY = -18;
 			var spawnPoint = playerSprite.getPosition();
 			bullet.setPosition(spawnPoint.x, spawnPoint.y + spawnY);
 			playerBullets.add(bullet);
@@ -151,6 +153,13 @@ class DexGameSubState extends MiniGameSubState {
 	override public function processReward() {
 		var rating = null;
 		// TODO: Add Rating Score criteria
+		if (playerSprite.alive && time <= 0) {
+			rating = Amazing;
+		} else if (!playerSprite.alive && time <= 30 && time > 15) {
+			rating = Good;
+		} else if (!playerSprite.alive && time <= 15 && time > 0) {
+			rating = Great;
+		}
 		var rewardState = new RewardSubState(miniGameCamera, player,
 			Dex(player.dex), rating);
 		rewardState.closeCallback = () -> {
