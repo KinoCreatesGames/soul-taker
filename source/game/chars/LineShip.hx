@@ -7,6 +7,7 @@ class LineShip extends EnemyShip {
 	public static inline var IDLE_TIME:Float = 1.5;
 	public static inline var WAIT_TIME:Float = 3;
 	public static inline var BULLET_CD:Float = 1;
+	public static inline var BULLET_SPEED:Float = 800;
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
@@ -14,6 +15,7 @@ class LineShip extends EnemyShip {
 	}
 
 	override public function initialize() {
+		makeGraphic(8, 8, KColor.RED);
 		ai = new State(idle);
 		bulletCD = BULLET_CD;
 		stateTime = IDLE_TIME;
@@ -42,6 +44,28 @@ class LineShip extends EnemyShip {
 		} else {
 			// Start Moving Again
 			acceleration.y = 300;
+		}
+
+		if (bulletCD <= 0) {
+			fireBullet();
+		} else {
+			bulletCD -= elapsed;
+		}
+	}
+
+	public function fireBullet() {
+		if (bulletCD <= 0) {
+			trace('Fire Bullet');
+			var bullet = bulletGrp.recycle(Bullet);
+			bullet.makeGraphic(8, 8, KColor.SNOW);
+			bullet.acceleration.y = 0;
+			bullet.velocity.set(0, 0);
+			var spawnY = 18;
+			var spawnPoint = this.getPosition();
+			bullet.setPosition(spawnPoint.x, spawnPoint.y + spawnY);
+			bulletGrp.add(bullet);
+			bullet.acceleration.y = BULLET_SPEED;
+			bulletCD = BULLET_CD;
 		}
 	}
 }
