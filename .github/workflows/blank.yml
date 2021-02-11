@@ -50,6 +50,12 @@ jobs:
       # Downloads lix dependencies
     - name: lix setup haxe
       run: lix install haxe 4.2.0
+    
+    - name: lix setup scope
+      run: lix scope create
+      
+    - name: lix use stable haxe version
+      run: lix use haxe stable
         
     - name: lix download
       run: lix download
