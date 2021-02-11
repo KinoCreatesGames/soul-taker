@@ -49,13 +49,13 @@ jobs:
       run: npm install --global lix
       # Downloads lix dependencies
     - name: lix setup haxe
-      run: lix install haxe 4.2.0
+      run: lix install haxe 4.1.5
     
     - name: lix setup scope
       run: lix scope create
       
     - name: lix use stable haxe version
-      run: lix use haxe stable
+      run: lix use haxe 4.1.5
         
     - name: lix download
       run: lix download
