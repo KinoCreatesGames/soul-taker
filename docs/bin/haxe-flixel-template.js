@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "52";
+	app.meta.h["build"] = "53";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -47409,7 +47409,7 @@ game_chars_LineShip.prototype = $extend(game_chars_EnemyShip.prototype,{
 			bullet.makeGraphic(8,8,-264717);
 			bullet.acceleration.set_y(0);
 			bullet.velocity.set(0,0);
-			bullet.maxVelocity.set(0,400);
+			bullet.maxVelocity.set(0,200);
 			var spawnY = 18;
 			var spawnPoint = this.getPosition();
 			bullet.setPosition(spawnPoint.x,spawnPoint.y + spawnY);
@@ -67505,7 +67505,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 191287;
+	this.version = 484863;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
