@@ -61,7 +61,7 @@ class LineShip extends EnemyShip {
 			bullet.makeGraphic(8, 8, KColor.SNOW);
 			bullet.acceleration.y = 0;
 			bullet.velocity.set(0, 0);
-			bullet.maxVelocity.set(0, 400);
+			bullet.maxVelocity.set(0, 200);
 			var spawnY = 18;
 			var spawnPoint = this.getPosition();
 			bullet.setPosition(spawnPoint.x, spawnPoint.y + spawnY);
