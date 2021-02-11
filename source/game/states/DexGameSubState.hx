@@ -43,7 +43,7 @@ class DexGameSubState extends MiniGameSubState {
 	}
 
 	public function createEnemyShips() {
-		enemyShips = new FlxTypedGroup<Enemy>(10);
+		enemyShips = new FlxTypedGroup<Enemy>(15);
 		enemyBullets = new FlxTypedGroup<Bullet>(100);
 		add(enemyBullets);
 		add(enemyShips);
