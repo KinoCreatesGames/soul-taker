@@ -9,6 +9,7 @@ class EnemyShip extends Enemy {
 			bulletGrp:FlxTypedGroup<Bullet>) {
 		super(x, y, data);
 		this.bulletGrp = bulletGrp;
+		initialize();
 	}
 
 	public function initialize() {

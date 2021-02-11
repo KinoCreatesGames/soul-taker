@@ -330,6 +330,17 @@
                     "agi": 5,
                     "dex": 5,
                     "intl": 5
+                },
+                {
+                    "guid": "024baa5f-b158-40cc-a8fd-01938fc17f06",
+                    "id": "1",
+                    "name": "LineShip",
+                    "atk": 1,
+                    "def": 0,
+                    "health": 3,
+                    "agi": 5,
+                    "dex": 5,
+                    "intl": 5
                 }
             ],
             "hidden": false,
