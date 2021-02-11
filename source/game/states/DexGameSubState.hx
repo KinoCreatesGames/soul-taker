@@ -10,6 +10,7 @@ class DexGameSubState extends MiniGameSubState {
 	public var enemyBullets:FlxTypedGroup<Bullet>;
 	public var spawnCD:Float;
 	public var enemySpawnCD:Float;
+	public var bulletCD:Float;
 
 	public static inline var PLAYER_SPEED:Float = 800;
 	public static inline var BULLET_SPEED:Int = 1200;
@@ -27,6 +28,7 @@ class DexGameSubState extends MiniGameSubState {
 	public function initialize() {
 		spawnCD = 0;
 		enemySpawnCD = 0;
+		bulletCD = BULLET_CD;
 	}
 
 	public function createPlayer() {
@@ -35,11 +37,15 @@ class DexGameSubState extends MiniGameSubState {
 
 		playerSprite = new FlxSprite(x, y);
 		playerSprite.makeGraphic(8, 8, KColor.SNOW);
+		playerBullets = new FlxTypedGroup<Bullet>(20);
+		add(playerBullets);
 		add(playerSprite);
 	}
 
 	public function createEnemyShips() {
-		enemyShips = new FlxTypedGroup<Enemy>(10);
+		enemyShips = new FlxTypedGroup<Enemy>(15);
+		enemyBullets = new FlxTypedGroup<Bullet>(100);
+		add(enemyBullets);
 		add(enemyShips);
 	}
 
@@ -53,8 +59,29 @@ class DexGameSubState extends MiniGameSubState {
 	public function updateControls(elapsed:Float) {
 		if (FlxG.keys.anyJustPressed([Z])) {
 			// Fire Bullet
+			fireBullet();
 		}
 		updatePlayerMovement(elapsed);
+		// Count Down bullet CD
+		if (bulletCD > 0) {
+			bulletCD -= elapsed;
+		}
+	}
+
+	public function fireBullet() {
+		if (bulletCD <= 0) {
+			trace('Fire Bullet');
+			var bullet = playerBullets.recycle(Bullet);
+			bullet.makeGraphic(8, 8, KColor.SNOW);
+			bullet.acceleration.y = 0;
+			bullet.velocity.set(0, 0);
+			var spawnY = -18;
+			var spawnPoint = playerSprite.getPosition();
+			bullet.setPosition(spawnPoint.x, spawnPoint.y + spawnY);
+			playerBullets.add(bullet);
+			bullet.acceleration.y = -BULLET_SPEED;
+			bulletCD = BULLET_CD;
+		}
 	}
 
 	public function updatePlayerMovement(elapsed:Float) {
@@ -87,10 +114,8 @@ class DexGameSubState extends MiniGameSubState {
 			}
 
 			// Tween The Sprite
-
-			playerSprite.bound(0, miniGameCamera.width, 0,
-				miniGameCamera.height);
 		}
+		playerSprite.bound(0, miniGameCamera.width, 0, miniGameCamera.height);
 	}
 
 	public function updateSpawnEnemies(elapsed:Float) {}
@@ -128,6 +153,13 @@ class DexGameSubState extends MiniGameSubState {
 	override public function processReward() {
 		var rating = null;
 		// TODO: Add Rating Score criteria
+		if (playerSprite.alive && time <= 0) {
+			rating = Amazing;
+		} else if (!playerSprite.alive && time <= 30 && time > 15) {
+			rating = Good;
+		} else if (!playerSprite.alive && time <= 15 && time > 0) {
+			rating = Great;
+		}
 		var rewardState = new RewardSubState(miniGameCamera, player,
 			Dex(player.dex), rating);
 		rewardState.closeCallback = () -> {
