@@ -48,7 +48,9 @@ jobs:
     - name: install lix globally
       run: npm install --global lix
       # Downloads lix dependencies
-      
+    - name: lix setup haxe
+      run: lix install haxe 4.2.0
+        
     - name: lix download
       run: lix download
       
