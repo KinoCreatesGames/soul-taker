@@ -8,6 +8,7 @@ class LineShip extends EnemyShip {
 	public static inline var WAIT_TIME:Float = 3;
 	public static inline var BULLET_CD:Float = 1;
 	public static inline var BULLET_SPEED:Float = 800;
+	public static inline var SHIP_SPEED:Float = 50;
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
@@ -33,7 +34,7 @@ class LineShip extends EnemyShip {
 			ai.currentState = attack;
 		} else {
 			stateTime -= elapsed;
-			acceleration.y = 300;
+			acceleration.y = SHIP_SPEED;
 		}
 	}
 
@@ -43,7 +44,7 @@ class LineShip extends EnemyShip {
 			velocity.set(0, 0);
 		} else {
 			// Start Moving Again
-			acceleration.y = 300;
+			acceleration.y = SHIP_SPEED;
 		}
 
 		if (bulletCD <= 0) {
@@ -60,6 +61,7 @@ class LineShip extends EnemyShip {
 			bullet.makeGraphic(8, 8, KColor.SNOW);
 			bullet.acceleration.y = 0;
 			bullet.velocity.set(0, 0);
+			bullet.maxVelocity.set(0, 400);
 			var spawnY = 18;
 			var spawnPoint = this.getPosition();
 			bullet.setPosition(spawnPoint.x, spawnPoint.y + spawnY);

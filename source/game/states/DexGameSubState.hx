@@ -1,12 +1,14 @@
 package game.states;
 
+import game.chars.LineShip;
+import game.chars.EnemyShip;
 import game.chars.Bullet;
 import game.chars.Enemy;
 
 class DexGameSubState extends MiniGameSubState {
 	public var playerSprite:FlxSprite;
 	public var playerBullets:FlxTypedGroup<Bullet>;
-	public var enemyShips:FlxTypedGroup<Enemy>;
+	public var enemyShips:FlxTypedGroup<EnemyShip>;
 	public var enemyBullets:FlxTypedGroup<Bullet>;
 	public var spawnCD:Float;
 	public var enemySpawnCD:Float;
@@ -43,7 +45,7 @@ class DexGameSubState extends MiniGameSubState {
 	}
 
 	public function createEnemyShips() {
-		enemyShips = new FlxTypedGroup<Enemy>(15);
+		enemyShips = new FlxTypedGroup<EnemyShip>(20);
 		enemyBullets = new FlxTypedGroup<Bullet>(100);
 		add(enemyBullets);
 		add(enemyShips);
@@ -118,7 +120,20 @@ class DexGameSubState extends MiniGameSubState {
 		playerSprite.bound(0, miniGameCamera.width, 0, miniGameCamera.height);
 	}
 
-	public function updateSpawnEnemies(elapsed:Float) {}
+	public function updateSpawnEnemies(elapsed:Float) {
+		var spawnPoint = new FlxPoint((Math.random() * (miniGameCamera.width
+			- 20)), -20);
+		if (enemySpawnCD <= 0) {
+			var shipData = DepotData.Actors.lines.getByFn((el) ->
+				el.name == 'LineShip');
+			var ship = new LineShip(spawnPoint.x, spawnPoint.y, shipData,
+				enemyBullets);
+			enemyShips.add(ship);
+			enemySpawnCD = ENEMY_SPAWN_CD;
+		} else {
+			enemySpawnCD -= elapsed;
+		}
+	}
 
 	public function updateCollisions() {
 		playerCollisions();
