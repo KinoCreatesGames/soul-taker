@@ -40,10 +40,11 @@ class CreditsSubState extends FlxSubState {
 		var padding = 24;
 		var x = titleText.x;
 		var y = underline.y + padding;
-
-		var kinoText = new FlxText(x, y, -1, 'Kino', Globals.FONT_N);
-		kinoText.screenCenter(FlxAxes.X);
-		add(kinoText);
+		for (credit in credits) {
+			var text = new FlxText(x, y, -1, credit, Globals.FONT_L);
+			text.screenCenter(FlxAxes.X);
+			add(text);
+		}
 	}
 
 	public function createBack() {
