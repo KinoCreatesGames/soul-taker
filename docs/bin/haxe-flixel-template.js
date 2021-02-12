@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "54";
+	app.meta.h["build"] = "56";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -4347,7 +4347,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fsounds%2Fsounds-go-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R13R6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R14R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R15R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i18929R3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i5794R3y5:SOUNDR5R22R19aR21R22hgoR2i33629R3R23R5R20R19aR18R20hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fsounds%2Fsounds-go-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R13R6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R14R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R15R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i21228R3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i5794R3y5:SOUNDR5R22R19aR21R22hgoR2i33629R3R23R5R20R19aR18R20hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -47678,6 +47678,16 @@ game_states_CreditsSubState.__name__ = "game.states.CreditsSubState";
 game_states_CreditsSubState.__super__ = flixel_FlxSubState;
 game_states_CreditsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 	create: function() {
+		var _this = DepotData.Credits.lines;
+		var result = new Array(_this.length);
+		var _g = 0;
+		var _g1 = _this.length;
+		while(_g < _g1) {
+			var i = _g++;
+			var line = _this[i];
+			result[i] = "" + line.title + " " + line.name;
+		}
+		this.credits = result;
 		this.createTitle();
 		this.createCredits();
 		this.createBack();
@@ -47695,9 +47705,17 @@ game_states_CreditsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		var padding = 24;
 		var x = this.titleText.x;
 		var y = this.underline.y + padding;
-		var kinoText = new flixel_text_FlxText(x,y,-1,"Kino",12);
-		kinoText.screenCenter(flixel_util_FlxAxes.X);
-		this.add(kinoText);
+		var lineSpacing = 12;
+		var _g = 0;
+		var _g1 = this.credits;
+		while(_g < _g1.length) {
+			var credit = _g1[_g];
+			++_g;
+			var text = new flixel_text_FlxText(x,y,-1,credit,16);
+			text.screenCenter(flixel_util_FlxAxes.X);
+			this.add(text);
+			y += text.get_height() + lineSpacing;
+		}
 	}
 	,createBack: function() {
 		var padding = 24;
@@ -67640,7 +67658,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 585624;
+	this.version = 78883;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109025,6 +109043,7 @@ DepotData.Barks = { name : "barks", lines : [{ name : "Koyuki", affectionMin : 0
 DepotData.Actors = { name : "actors", lines : [{ name : "Koyuki", agi : 5, intl : 5, guid : "2a713adc-7402-4407-bfdc-042aa0a65f24", id : "0", dex : 5, atk : 5, health : 20, def : 5},{ name : "LineShip", agi : 5, intl : 5, guid : "024baa5f-b158-40cc-a8fd-01938fc17f06", id : "1", dex : 5, atk : 1, health : 3, def : 0}], isProps : false, hidden : false, guid : "da8505fc-f2e8-4663-bf3b-e752c233e6ed", displayColumn : "id", description : "Information on actor stats and their base stats.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
 DepotData.Cutscene = { name : "cutscene", lines : [{ name : "Intro", guid : "afec7e6f-d93e-424a-8b4b-9965d45a21d0", cutsceneText : [{ text : "It all started many years ago.", guid : "bed6a640-903a-469f-a12a-7496f8c63302", id : "0", delay : 4},{ text : "A war occured with the human world and the demon world. ", guid : "70fb87ac-422b-460f-9f0e-4beabe8016f8", id : "1", delay : 4},{ text : "At that point the demon were sealed away for good.", guid : "a92649b3-668a-4fca-9570-165144e8a5de", id : "2", delay : 4}], id : "0"}], isProps : false, hidden : false, guid : "6124e31b-61f4-4ee6-996c-a24429f73c00", displayColumn : "id", description : "Sheet for doing cutscene skits in game.", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
 DepotData.CutsceneText = { parentSheetGUID : "6124e31b-61f4-4ee6-996c-a24429f73c00", name : "cutsceneText", isProps : false, hidden : true, guid : "b22564a7-ff9a-4722-aa9c-762a94b41b0b", displayColumn : "id", description : "list@6124e31b-61f4-4ee6-996c-a24429f73c00", columnGUID : "12ad0212-d5ea-416e-9264-47793808b47b"};
+DepotData.Credits = { name : "credits", lines : [{ name : "Kino Rose", title : "Programming", guid : "9ab6e3c9-6c74-4920-8cfb-82b81c91037b", id : "0"},{ name : "Kino Rose", title : "System Design", guid : "7599c531-9750-4648-9a8b-ba13f0a2b1ba", id : "1"}], isProps : false, hidden : false, guid : "99d48ea0-7abc-4a06-9a9d-cf4958cfdcb3", displayColumn : "id", description : "Credit Individuals for the game", configurable : { name : "text", description : "text", displayColumn : "columnSelect@name", "columnSelect@name@displayColumn" : { allowedTypes : ["int","float","text","longtext"]}}};
 Globals.GAME_TITLE = "Soul Taker";
 Globals.GAME_SAVE_SLOTS = 5;
 Globals.TEXT_START = "Start";
