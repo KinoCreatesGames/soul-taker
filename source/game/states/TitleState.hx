@@ -12,6 +12,7 @@ class TitleState extends FlxState {
 	public var playButton:TextButton;
 	public var continueButton:TextButton;
 	public var optionsButton:TextButton;
+	public var creditsButton:TextButton;
 	public var completeFadeStart:Bool;
 	#if desktop
 	public var exitButton:TextButton;
@@ -68,6 +69,13 @@ class TitleState extends FlxState {
 		optionsButton.screenCenter();
 		optionsButton.y += y;
 		y += 40;
+		creditsButton = new TextButton(0, 0, Globals.TEXT_CREDITS,
+			Globals.FONT_N, clickCredits);
+		creditsButton.hoverColor = KColor.BURGUNDY;
+		creditsButton.clickColor = KColor.BURGUNDY;
+		creditsButton.screenCenter();
+		creditsButton.y += y;
+		y += 40;
 		#if desktop
 		exitButton = new TextButton(0, 0, Globals.TEXT_EXIT, Globals.FONT_N,
 			clickExit);
@@ -84,9 +92,12 @@ class TitleState extends FlxState {
 		continueButton.alpha = 0;
 		optionsButton.canClick = false;
 		optionsButton.alpha = 0;
+		creditsButton.canClick = false;
+		creditsButton.alpha = 0;
 		add(playButton);
 		add(continueButton);
 		add(optionsButton);
+		add(creditsButton);
 		#if desktop
 		exitButton.canClick = false;
 		exitButton.alpha = 0;
@@ -115,13 +126,16 @@ class TitleState extends FlxState {
 			}
 			if (continueButton.alpha >= .9) {
 				optionsButton.fadeIn(fadeTime);
+			}
+			if (optionsButton.alpha >= .9) {
+				creditsButton.fadeIn(fadeTime);
 				#if !desktop
 				completeFadeStart = true;
 				#end
 			}
 
 			#if desktop
-			if (optionsButton.alpha >= .9) {
+			if (creditsButton.alpha >= .9) {
 				exitButton.fadeIn(fadeTime);
 				completeFadeStart = true;
 			}
@@ -133,6 +147,7 @@ class TitleState extends FlxState {
 			playButton.canClick = true;
 			continueButton.canClick = true;
 			optionsButton.canClick = true;
+			creditsButton.canClick = true;
 			#if desktop
 			exitButton.canClick = true;
 			#end
@@ -152,6 +167,10 @@ class TitleState extends FlxState {
 
 	public function clickOptions() {
 		openSubState(new OptionsSubState());
+	}
+
+	public function clickCredits() {
+		openSubState(new CreditsSubState());
 	}
 
 	#if desktop
