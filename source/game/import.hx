@@ -21,3 +21,4 @@ using ext.StringExt;
 using StringTools;
 using ext.ArrayExt;
 using flixel.util.FlxSpriteUtil;
+using game.ext.SpriteExt;
