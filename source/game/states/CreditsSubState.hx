@@ -8,16 +8,19 @@ class CreditsSubState extends FlxSubState {
 	public var underline:Underline;
 	public var backButton:FlxButton;
 
-	public function new() {
-		super(KColor.RICH_BLACK_FORGRA);
-	}
-
 	/**
 	 * Individuals to credit
 	 */
 	public var credits:Array<String>;
 
+	public function new() {
+		super(KColor.RICH_BLACK_FORGRA);
+	}
+
 	override public function create() {
+		// credits = DepotData.Credits.lines;
+		credits = DepotData.Credits.lines.map((line) ->
+			'${line.title} ${line.name}');
 		createTitle();
 		createCredits();
 		createBack();
@@ -40,10 +43,12 @@ class CreditsSubState extends FlxSubState {
 		var padding = 24;
 		var x = titleText.x;
 		var y = underline.y + padding;
+		var lineSpacing = 12;
 		for (credit in credits) {
 			var text = new FlxText(x, y, -1, credit, Globals.FONT_L);
 			text.screenCenter(FlxAxes.X);
 			add(text);
+			y += text.height + lineSpacing;
 		}
 	}
 
