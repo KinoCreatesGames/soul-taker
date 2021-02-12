@@ -477,6 +477,69 @@
             "isProps": false,
             "parentSheetGUID": "6124e31b-61f4-4ee6-996c-a24429f73c00",
             "columnGUID": "12ad0212-d5ea-416e-9264-47793808b47b"
+        },
+        {
+            "name": "credits",
+            "description": "Credit Individuals for the game",
+            "displayColumn": "id",
+            "guid": "99d48ea0-7abc-4a06-9a9d-cf4958cfdcb3",
+            "columns": [
+                {
+                    "typeStr": "text",
+                    "guid": "5a3545e8-6d50-41c0-ac52-d084918a2721",
+                    "name": "name",
+                    "description": "Name of the individual",
+                    "defaultValue": "Name",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                },
+                {
+                    "typeStr": "text",
+                    "guid": "4cfbd9ff-b9af-4c0f-97cf-25662a81f062",
+                    "name": "title",
+                    "description": "Title of the individual and what they did for the game",
+                    "defaultValue": "Developer",
+                    "iconName": "newText",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "9ab6e3c9-6c74-4920-8cfb-82b81c91037b",
+                    "id": "0",
+                    "name": "Kino Rose",
+                    "title": "Programming"
+                },
+                {
+                    "guid": "7599c531-9750-4648-9a8b-ba13f0a2b1ba",
+                    "id": "1",
+                    "name": "Kino Rose",
+                    "title": "System Design"
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
         }
     ]
 }
