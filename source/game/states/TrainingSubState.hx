@@ -100,6 +100,14 @@ class TrainingSubState extends FlxSubState {
 
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
+		updateGameTime(elapsed);
+	}
+
+	public function updateGameTime(elapsed:Float) {
+		if (SaveLoad.Save.gameData.gameTime == null) {
+			SaveLoad.Save.gameData.gameTime = 0;
+		}
+		SaveLoad.Save.gameData.gameTime += elapsed;
 	}
 
 	public function clickLeft() {

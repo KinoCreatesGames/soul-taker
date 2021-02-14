@@ -16,9 +16,13 @@ class HubState extends FlxState {
 	public var trainingButton:FlxButton;
 	public var saveButton:FlxButton;
 	public var optionsButton:FlxButton;
+	public var exitButton:FlxButton;
 	public var playerHUD:PlayerHUD;
 	public var statWindow:StatWindow;
 	public var msgWindow:MsgWindow;
+
+	public static inline var BUTTON_WIDTH:Int = 32;
+	public static inline var BUTTON_HEIGHT:Int = 32;
 
 	override public function create() {
 		FlxG.mouse.visible = true;
@@ -44,20 +48,28 @@ class HubState extends FlxState {
 		var x = FlxG.width - 120;
 		var y = 20;
 		var spacing = 40;
+		exitButton = new FlxButton(x, y, '', clickExit);
+		exitButton.loadGraphic(AssetPaths.exit_door__png, true, 32, 32);
+		x += spacing;
+		optionsButton = new FlxButton(x, y, '', clickOptions);
+		optionsButton.loadGraphic(AssetPaths.cog_two__png, true, 32, 32);
+		x -= spacing;
+		y += spacing;
 		trainingButton = new FlxButton(x, y, 'Training', clickTraining);
 		y += spacing;
 		statsButton = new FlxButton(x, y, '', clickStats);
-		statsButton.loadGraphic(AssetPaths.statbutton__png, true, 32, 32);
+		statsButton.loadGraphic(AssetPaths.statbutton__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
 		y += spacing;
 		saveButton = new FlxButton(x, y, 'Save', clickSave);
 		y += spacing;
-		optionsButton = new FlxButton(x, y, 'Options', clickOptions);
 
 		// Add Buttons to  screen
 		add(trainingButton);
 		add(statsButton);
 		add(saveButton);
 		add(optionsButton);
+		add(exitButton);
 	}
 
 	public function createPlayerHUD() {
@@ -169,5 +181,11 @@ class HubState extends FlxState {
 
 	public function clickOptions() {
 		openSubState(new OptionsSubState());
+	}
+
+	public function clickExit() {
+		// Return to title state
+		// TODO: Add Confirmation box as a UI element
+		FlxG.switchState(new TitleState());
 	}
 }

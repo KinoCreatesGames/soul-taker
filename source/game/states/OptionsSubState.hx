@@ -1,5 +1,6 @@
 package game.states;
 
+import game.ui.Underline;
 import flixel.util.FlxAxes;
 
 class OptionsSubState extends FlxSubState {
@@ -18,8 +19,12 @@ class OptionsSubState extends FlxSubState {
 	public var textSpeedModeText:FlxText;
 	public var textSpeedDownButton:FlxButton;
 	public var backButton:FlxButton;
+	public var underline:Underline;
 
 	private var save:FlxSave;
+
+	public static inline var BUTTON_WIDTH:Int = 32;
+	public static inline var BUTTON_HEIGHT:Int = 32;
 
 	public function new() {
 		super(KColor.RICH_BLACK_FORGRA);
@@ -36,9 +41,15 @@ class OptionsSubState extends FlxSubState {
 	}
 
 	public function createTitleText() {
-		optionsText = new FlxText(0, 40, -1, Globals.TEXT_OPTIONS, 32);
+		optionsText = new FlxText(0, 40, -1, Globals.TEXT_OPTIONS,
+			Globals.FONT_H);
 		optionsText.screenCenter(FlxAxes.X);
+		underline = new Underline(0, optionsText.y + optionsText.height + 8,
+			optionsText.width * 1.5, 6, KColor.SNOW);
+		underline.screenCenter(FlxAxes.X);
+		underline.setupFade(2.25, true);
 		add(optionsText);
+		add(underline);
 	}
 
 	public function createOptions() {
@@ -49,28 +60,26 @@ class OptionsSubState extends FlxSubState {
 	}
 
 	public function createVolume(position:FlxPoint) {
-		volumeText = new FlxText(0, optionsText.y + optionsText.height + 10,
-			0, 'Volume', 16);
-		volumeText.alignment = CENTER;
-		volumeText.screenCenter(FlxAxes.X);
+		var padding = 24;
+		var horizontalSpacing = 48;
+		volumeText = new FlxText(padding,
+			optionsText.y + optionsText.height + 10 + underline.height, -1,
+			'Volume', Globals.FONT_N);
+		volumeText.alignment = LEFT;
+		// volumeText.screenCenter(FlxAxes.X);
 		add(volumeText);
 
+		var x = (horizontalSpacing * 2) + volumeText.width;
 		// Volume Button smaller than 'default' buttons
-		volumeDownButton = new FlxButton(8,
-			volumeText.y + volumeText.height + 2, '-', clickVolumeDown);
-		volumeDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		volumeDownButton = new FlxButton(x, volumeText.y, '-', clickVolumeDown);
+		volumeDownButton.loadGraphic(AssetPaths.left_arrow_button__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
 		// volumeDownButton.onUp.sound = FlxG.sound.load(AssetPaths.select__wav);
 		add(volumeDownButton);
 
-		volumeUpButton = new FlxButton(FlxG.width - 28, volumeDownButton.y,
-			"+", clickVolumeUp);
-		volumeUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
-		// volumeUpButton.onUp.sound =
-		add(volumeUpButton);
-
 		volumeBar = new FlxBar(volumeDownButton.x + volumeDownButton.width + 4,
-			volumeDownButton.y, LEFT_TO_RIGHT, Std.int(FlxG.width - 64),
-			Std.int(volumeUpButton.height));
+			volumeDownButton.y, LEFT_TO_RIGHT, Std.int(150),
+			Std.int(volumeDownButton.height));
 		volumeBar.createFilledBar(0xff464646, KColor.SNOW, true, KColor.WHITE);
 		add(volumeBar);
 
@@ -82,8 +91,15 @@ class OptionsSubState extends FlxSubState {
 		volumeAmountText.y = volumeBar.y
 			+ (volumeBar.height / 2)
 			- (volumeAmountText.height / 2);
-		volumeAmountText.screenCenter(FlxAxes.X);
+		volumeAmountText.x = (volumeBar.x + volumeBar.width) / 2;
 		add(volumeAmountText);
+
+		volumeUpButton = new FlxButton(volumeBar.x + volumeBar.width,
+			volumeDownButton.y, "+", clickVolumeUp);
+		volumeUpButton.loadGraphic(AssetPaths.right_arrow__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
+		// volumeUpButton.onUp.sound =
+		add(volumeUpButton);
 		updateVolume();
 	}
 
@@ -91,18 +107,20 @@ class OptionsSubState extends FlxSubState {
 		var pos = volumeAmountText.getPosition();
 		var spacing = 48;
 		var horizontalSpacing = 48;
-		var x = volumeDownButton.x;
+		var x = volumeText.x;
 		var y = pos.y + spacing;
 		skipLabelText = new FlxText(x, y, -1, 'Skip Mini Games',
 			Globals.FONT_N);
 		x += (horizontalSpacing * 2) + skipLabelText.width;
-		skipDownButton = new FlxButton(x, y, '<-', clickSkip);
-		skipDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		skipDownButton = new FlxButton(x, y, '', clickSkip);
+		skipDownButton.loadGraphic(AssetPaths.left_arrow_button__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
 		x += horizontalSpacing;
 		skipMiniGamesText = new FlxText(x, y, -1, 'No', Globals.FONT_N);
 		x += horizontalSpacing;
-		skipUpButton = new FlxButton(x, y, '->', clickSkip);
-		skipUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		skipUpButton = new FlxButton(x, y, '', clickSkip);
+		skipUpButton.loadGraphic(AssetPaths.right_arrow__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
 
 		add(skipLabelText);
 		add(skipDownButton);
@@ -121,18 +139,20 @@ class OptionsSubState extends FlxSubState {
 		var pos = skipLabelText.getPosition();
 		var spacing = 48;
 		var horizontalSpacing = 48;
-		var x = volumeDownButton.x;
+		var x = volumeText.x;
 		var y = pos.y + spacing;
 		textSpeedLabelText = new FlxText(x, y, -1, 'Text Speed',
 			Globals.FONT_N);
 		x += (horizontalSpacing * 2) + skipLabelText.width;
-		textSpeedDownButton = new FlxButton(x, y, '<-', clickSpeedDown);
-		textSpeedDownButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		textSpeedDownButton = new FlxButton(x, y, '', clickSpeedDown);
+		textSpeedDownButton.loadGraphic(AssetPaths.left_arrow_button__png,
+			true, BUTTON_WIDTH, BUTTON_HEIGHT);
 		x += horizontalSpacing;
 		textSpeedModeText = new FlxText(x, y, -1, 'Normal', Globals.FONT_N);
 		x += horizontalSpacing + 12;
-		textSpeedUpButton = new FlxButton(x, y, '->', clickSpeedUp);
-		textSpeedUpButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		textSpeedUpButton = new FlxButton(x, y, '', clickSpeedUp);
+		textSpeedUpButton.loadGraphic(AssetPaths.right_arrow__png, true,
+			BUTTON_WIDTH, BUTTON_HEIGHT);
 
 		add(textSpeedLabelText);
 		add(textSpeedDownButton);
@@ -207,7 +227,7 @@ class OptionsSubState extends FlxSubState {
 	}
 
 	public function updateTextMode() {
-		trace(textSpeedModeText.text, save.data.modeText);
+		// trace(textSpeedModeText.text, save.data.modeText);
 		textSpeedModeText.text = save.data.modeText;
 	}
 
