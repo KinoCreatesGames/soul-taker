@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "56";
+	app.meta.h["build"] = "57";
 	app.meta.h["company"] = "KinoCreatesGames";
 	app.meta.h["file"] = "haxe-flixel-template";
 	app.meta.h["name"] = "Soul taker";
@@ -4347,7 +4347,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fsounds%2Fsounds-go-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3R8R5R10R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R11R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R12R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R13R6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R14R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R15R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i21228R3R4R5R16R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR18y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R17R5y26:flixel%2Fsounds%2Fbeep.mp3R19aR21y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i5794R3y5:SOUNDR5R22R19aR21R22hgoR2i33629R3R23R5R20R19aR18R20hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R24R25y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R30R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R31R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy36:assets%2Fsounds%2Fsounds-go-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y29:assets%2Fimages%2Fcog-two.pngR2i512R3y5:IMAGER5R7R6tgoR0y28:assets%2Fimages%2Fbutton.pngR2i1126R3R8R5R9R6tgoR0y31:assets%2Fimages%2Fexit-door.pngR2i382R3R8R5R10R6tgoR0y39:assets%2Fimages%2Fleft-arrow-button.pngR2i3842R3R8R5R11R6tgoR0y33:assets%2Fimages%2Fright-arrow.pngR2i574R3R8R5R12R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R13R6tgoR0y37:assets%2Fimages%2Faffection-heart.pngR2i685R3R8R5R14R6tgoR0y33:assets%2Fimages%2Fmartha-test.pngR2i6077R3R8R5R15R6tgoR0y34:assets%2Fimages%2Fdialog-arrow.pngR2i261R3R8R5R16R6tgoR0y32:assets%2Fimages%2Fstatbutton.pngR2i484R3R8R5R17R6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R18R6tgoR0y34:assets%2Fdata%2Fdata-goes-here.txtR2zR3R4R5R19R6tgoR0y24:assets%2Fdata%2Fsoul.dpoR2i21228R3R4R5R20R6tgoR2i39706R3y5:MUSICR5y28:flixel%2Fsounds%2Fflixel.mp3y9:pathGroupaR22y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i2114R3R21R5y26:flixel%2Fsounds%2Fbeep.mp3R23aR25y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i5794R3y5:SOUNDR5R26R23aR25R26hgoR2i33629R3R27R5R24R23aR22R24hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R28R29y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R8R5R34R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R8R5R35R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -48093,6 +48093,13 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 		var x = flixel_FlxG.width - 120;
 		var y = 20;
 		var spacing = 40;
+		this.exitButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickExit));
+		this.exitButton.loadGraphic("assets/images/exit-door.png",true,32,32);
+		x += spacing;
+		this.optionsButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickOptions));
+		this.optionsButton.loadGraphic("assets/images/cog-two.png",true,32,32);
+		x -= spacing;
+		y += spacing;
 		this.trainingButton = new flixel_ui_FlxButton(x,y,"Training",$bind(this,this.clickTraining));
 		y += spacing;
 		this.statsButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickStats));
@@ -48100,11 +48107,11 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 		y += spacing;
 		this.saveButton = new flixel_ui_FlxButton(x,y,"Save",$bind(this,this.clickSave));
 		y += spacing;
-		this.optionsButton = new flixel_ui_FlxButton(x,y,"Options",$bind(this,this.clickOptions));
 		this.add(this.trainingButton);
 		this.add(this.statsButton);
 		this.add(this.saveButton);
 		this.add(this.optionsButton);
+		this.add(this.exitButton);
 	}
 	,createPlayerHUD: function() {
 		this.playerHUD = new game_ui_PlayerHUD(0,0,this.player);
@@ -48193,6 +48200,12 @@ game_states_HubState.prototype = $extend(flixel_FlxState.prototype,{
 	,clickOptions: function() {
 		this.openSubState(new game_states_OptionsSubState());
 	}
+	,clickExit: function() {
+		var nextState = new game_states_TitleState();
+		if(flixel_FlxG.game._state.switchTo(nextState)) {
+			flixel_FlxG.game._requestedState = nextState;
+		}
+	}
 	,__class__: game_states_HubState
 });
 var game_states_IntlGameSubState = function(x,y,width,height,gal) {
@@ -48263,7 +48276,11 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 	,createTitleText: function() {
 		this.optionsText = new flixel_text_FlxText(0,40,-1,"Options",32);
 		this.optionsText.screenCenter(flixel_util_FlxAxes.X);
+		this.underline = new game_ui_Underline(0,this.optionsText.y + this.optionsText.get_height() + 8,this.optionsText.get_width() * 1.5,6,-264717);
+		this.underline.screenCenter(flixel_util_FlxAxes.X);
+		this.underline.setupFade(2.25,true);
 		this.add(this.optionsText);
+		this.add(this.underline);
 	}
 	,createOptions: function() {
 		var pos = new flixel_math_FlxPoint(0,0);
@@ -48272,17 +48289,16 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.createBackButton();
 	}
 	,createVolume: function(position) {
-		this.volumeText = new flixel_text_FlxText(0,this.optionsText.y + this.optionsText.get_height() + 10,0,"Volume",16);
-		this.volumeText.set_alignment("center");
-		this.volumeText.screenCenter(flixel_util_FlxAxes.X);
+		var padding = 24;
+		var horizontalSpacing = 48;
+		this.volumeText = new flixel_text_FlxText(padding,this.optionsText.y + this.optionsText.get_height() + 10 + this.underline.get_height(),-1,"Volume",12);
+		this.volumeText.set_alignment("left");
 		this.add(this.volumeText);
-		this.volumeDownButton = new flixel_ui_FlxButton(8,this.volumeText.y + this.volumeText.get_height() + 2,"-",$bind(this,this.clickVolumeDown));
-		this.volumeDownButton.loadGraphic("assets/images/button.png",true,20,20);
+		var x = horizontalSpacing * 2 + this.volumeText.get_width();
+		this.volumeDownButton = new flixel_ui_FlxButton(x,this.volumeText.y,"-",$bind(this,this.clickVolumeDown));
+		this.volumeDownButton.loadGraphic("assets/images/left-arrow-button.png",true,32,32);
 		this.add(this.volumeDownButton);
-		this.volumeUpButton = new flixel_ui_FlxButton(flixel_FlxG.width - 28,this.volumeDownButton.y,"+",$bind(this,this.clickVolumeUp));
-		this.volumeUpButton.loadGraphic("assets/images/button.png",true,20,20);
-		this.add(this.volumeUpButton);
-		this.volumeBar = new flixel_ui_FlxBar(this.volumeDownButton.x + this.volumeDownButton.get_width() + 4,this.volumeDownButton.y,flixel_ui_FlxBarFillDirection.LEFT_TO_RIGHT,flixel_FlxG.width - 64 | 0,this.volumeUpButton.get_height() | 0);
+		this.volumeBar = new flixel_ui_FlxBar(this.volumeDownButton.x + this.volumeDownButton.get_width() + 4,this.volumeDownButton.y,flixel_ui_FlxBarFillDirection.LEFT_TO_RIGHT,150,this.volumeDownButton.get_height() | 0);
 		this.volumeBar.createFilledBar(-12171706,-264717,true,-1);
 		this.add(this.volumeBar);
 		this.volumeAmountText = new flixel_text_FlxText(0,0,200,flixel_FlxG.sound.volume * 100 + "%",8);
@@ -48290,25 +48306,28 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.volumeAmountText.set_borderStyle(flixel_text_FlxTextBorderStyle.OUTLINE);
 		this.volumeAmountText.set_borderColor(-12171706);
 		this.volumeAmountText.set_y(this.volumeBar.y + this.volumeBar.get_height() / 2 - this.volumeAmountText.get_height() / 2);
-		this.volumeAmountText.screenCenter(flixel_util_FlxAxes.X);
+		this.volumeAmountText.set_x((this.volumeBar.x + this.volumeBar.get_width()) / 2);
 		this.add(this.volumeAmountText);
+		this.volumeUpButton = new flixel_ui_FlxButton(this.volumeBar.x + this.volumeBar.get_width(),this.volumeDownButton.y,"+",$bind(this,this.clickVolumeUp));
+		this.volumeUpButton.loadGraphic("assets/images/right-arrow.png",true,32,32);
+		this.add(this.volumeUpButton);
 		this.updateVolume();
 	}
 	,createSkip: function() {
 		var pos = this.volumeAmountText.getPosition();
 		var spacing = 48;
 		var horizontalSpacing = 48;
-		var x = this.volumeDownButton.x;
+		var x = this.volumeText.x;
 		var y = pos.y + spacing;
 		this.skipLabelText = new flixel_text_FlxText(x,y,-1,"Skip Mini Games",12);
 		x += horizontalSpacing * 2 + this.skipLabelText.get_width();
-		this.skipDownButton = new flixel_ui_FlxButton(x,y,"<-",$bind(this,this.clickSkip));
-		this.skipDownButton.loadGraphic("assets/images/button.png",true,20,20);
+		this.skipDownButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickSkip));
+		this.skipDownButton.loadGraphic("assets/images/left-arrow-button.png",true,32,32);
 		x += horizontalSpacing;
 		this.skipMiniGamesText = new flixel_text_FlxText(x,y,-1,"No",12);
 		x += horizontalSpacing;
-		this.skipUpButton = new flixel_ui_FlxButton(x,y,"->",$bind(this,this.clickSkip));
-		this.skipUpButton.loadGraphic("assets/images/button.png",true,20,20);
+		this.skipUpButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickSkip));
+		this.skipUpButton.loadGraphic("assets/images/right-arrow.png",true,32,32);
 		this.add(this.skipLabelText);
 		this.add(this.skipDownButton);
 		this.add(this.skipMiniGamesText);
@@ -48323,17 +48342,17 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		var pos = this.skipLabelText.getPosition();
 		var spacing = 48;
 		var horizontalSpacing = 48;
-		var x = this.volumeDownButton.x;
+		var x = this.volumeText.x;
 		var y = pos.y + spacing;
 		this.textSpeedLabelText = new flixel_text_FlxText(x,y,-1,"Text Speed",12);
 		x += horizontalSpacing * 2 + this.skipLabelText.get_width();
-		this.textSpeedDownButton = new flixel_ui_FlxButton(x,y,"<-",$bind(this,this.clickSpeedDown));
-		this.textSpeedDownButton.loadGraphic("assets/images/button.png",true,20,20);
+		this.textSpeedDownButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickSpeedDown));
+		this.textSpeedDownButton.loadGraphic("assets/images/left-arrow-button.png",true,32,32);
 		x += horizontalSpacing;
 		this.textSpeedModeText = new flixel_text_FlxText(x,y,-1,"Normal",12);
 		x += horizontalSpacing + 12;
-		this.textSpeedUpButton = new flixel_ui_FlxButton(x,y,"->",$bind(this,this.clickSpeedUp));
-		this.textSpeedUpButton.loadGraphic("assets/images/button.png",true,20,20);
+		this.textSpeedUpButton = new flixel_ui_FlxButton(x,y,"",$bind(this,this.clickSpeedUp));
+		this.textSpeedUpButton.loadGraphic("assets/images/right-arrow.png",true,32,32);
 		this.add(this.textSpeedLabelText);
 		this.add(this.textSpeedDownButton);
 		this.add(this.textSpeedModeText);
@@ -48405,7 +48424,6 @@ game_states_OptionsSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 		this.volumeAmountText.set_text(volume + "%");
 	}
 	,updateTextMode: function() {
-		haxe_Log.trace(this.textSpeedModeText.text,{ fileName : "source/game/states/OptionsSubState.hx", lineNumber : 210, className : "game.states.OptionsSubState", methodName : "updateTextMode", customParams : [this.save.data.modeText]});
 		this.textSpeedModeText.set_text(this.save.data.modeText);
 	}
 	,updateSkip: function() {
@@ -48987,6 +49005,13 @@ game_states_TrainingSubState.prototype = $extend(flixel_FlxSubState.prototype,{
 	}
 	,update: function(elapsed) {
 		flixel_FlxSubState.prototype.update.call(this,elapsed);
+		this.updateGameTime(elapsed);
+	}
+	,updateGameTime: function(elapsed) {
+		if(game_SaveLoad.get_Save().gameData.gameTime == null) {
+			game_SaveLoad.get_Save().gameData.gameTime = 0;
+		}
+		game_SaveLoad.get_Save().gameData.gameTime += elapsed;
 	}
 	,clickLeft: function() {
 		this.channelIndex = (this.channelIndex - 1) % 6;
@@ -67658,7 +67683,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 78883;
+	this.version = 803328;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -109026,7 +109051,11 @@ openfl_display_DisplayObject.__tempStack = new lime_utils_ObjectPool(function() 
 	stack.set_length(0);
 });
 AssetPaths.sounds_go_here__txt = "assets/sounds/sounds-go-here.txt";
+AssetPaths.cog_two__png = "assets/images/cog-two.png";
 AssetPaths.button__png = "assets/images/button.png";
+AssetPaths.exit_door__png = "assets/images/exit-door.png";
+AssetPaths.left_arrow_button__png = "assets/images/left-arrow-button.png";
+AssetPaths.right_arrow__png = "assets/images/right-arrow.png";
 AssetPaths.images_go_here__txt = "assets/images/images-go-here.txt";
 AssetPaths.affection_heart__png = "assets/images/affection-heart.png";
 AssetPaths.martha_test__png = "assets/images/martha-test.png";
@@ -110280,6 +110309,10 @@ game_states_DexGameSubState.BULLET_SPEED = 1200;
 game_states_DexGameSubState.BULLET_CD = 0.125;
 game_states_DexGameSubState.INVINCIBLE_CD = 2;
 game_states_DexGameSubState.ENEMY_SPAWN_CD = 2.5;
+game_states_HubState.BUTTON_WIDTH = 32;
+game_states_HubState.BUTTON_HEIGHT = 32;
+game_states_OptionsSubState.BUTTON_WIDTH = 32;
+game_states_OptionsSubState.BUTTON_HEIGHT = 32;
 game_states_RewardSubState.STAR_DELAY = 0.50;
 game_states_RewardSubState.REWARD_GOOD = 2;
 game_states_RewardSubState.REWARD_GREAT = 4;
